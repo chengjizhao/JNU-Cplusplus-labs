@@ -1,0 +1,6 @@
+#include<stdio.h>
+int main(void)
+{
+    main();//该函数无限调用本身，使得return函数遥不可及，最终栈溢出导致段错误，纠正方法为在代码上改写无限调用本身，使函数能在某个环节停止
+    return 0;
+}
