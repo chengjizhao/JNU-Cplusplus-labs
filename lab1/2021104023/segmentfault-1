@@ -1,0 +1,10 @@
+#include <stdio.h>
+ 
+int main (void)
+{
+	int *ptr = NULL;
+	*ptr = 0;
+	return 0;
+}
+//这段程序中，首先定义了一个整型指针 ptr，并将其初始化为 NULL。然后在下一行代码中，试图对指针所指向的内存空间进行赋值，即 *ptr = 0。
+//然而，由于 ptr 是一个空指针（NULL），它并不指向任何有效的内存地址。因此，试图访问该指针所指向的内存空间时，会出现段错误（segmentation fault），导致程序崩溃。
