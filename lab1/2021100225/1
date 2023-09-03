@@ -1,1 +1,9 @@
-
+#include <iostream>
+using namespace std;
+int main( )
+{
+    int *p=NULL;
+    cout << *p << endl;       //定义指针变量p为空指针，空指针指向的是内存地址编号为0的内存空间，内存编号为0的内存空间是系统占用内存，不允许用户访问
+	system("pause");          //解决该段错误的方法是，将p重新定义为非系统占用内存变量的地址
+	return 0;
+}
