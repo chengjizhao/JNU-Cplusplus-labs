@@ -1,0 +1,8 @@
+void recursiveFunction() {
+    recursiveFunction();
+}
+
+int main() {
+    recursiveFunction();//当递归函数的递归层数过多时，可能会导致函数调用栈溢出，从而产生段错误
+    return 0;
+}
