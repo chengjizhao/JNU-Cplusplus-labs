@@ -1,0 +1,6 @@
+#include <stdio.h>
+void main()
+{
+int *ptr;
+*ptr=1;    //由于指针未定义，引用无效，引起segmentation fault
+}
