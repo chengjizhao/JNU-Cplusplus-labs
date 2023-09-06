@@ -1,0 +1,7 @@
+#include <stdio.h>
+int main(int argc, char *argv[])
+{
+    int *ptr = (int *)0;
+    *ptr = 100;//访问系统保护的内存地址导致Segmentation fault
+    return 0;
+}
