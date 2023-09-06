@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+	int a = 5;
+	int *p = &a;
+	*p = 6;
+    printf("p ==%d", *p);
+	p = NULL;
+	printf("p==%d", *p);    //更改了指针所指向的地址，并将地址指向了不可访问的内存地址
+	system("pause");        //解决该段错误的方法是将指针指向新的可访问的内存地址
+	return 0;
+}
