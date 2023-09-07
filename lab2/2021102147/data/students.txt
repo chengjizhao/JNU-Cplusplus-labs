@@ -1,0 +1,6 @@
+{"Major":"电气工程及其自动化","Name":"甲","Number":"2020114514","Scores":[]}
+{"Major":"电气工程及其自动化","Name":"乙","Number":"2020114515","Scores":[]}
+{"Major":"电气工程及其自动化","Name":"丙","Number":"2020114516","Scores":[]}
+{"Major":"电气工程及其自动化","Name":"丁","Number":"2020114517","Scores":[]}
+{"Major":"电气工程及其自动化","Name":"戊","Number":"2020114518","Scores":[]}
+{"Major":"电气工程及其自动化","Name":"己","Number":"2020114519","Scores":[]}
