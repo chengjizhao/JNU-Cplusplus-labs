@@ -68,7 +68,7 @@ int file_Input(stu *pStudent)
 		while (getline(ss, str, ','))
 		{
 			//int nScr = 0;	//成绩编号
-				switch(nMem)
+				switch(nMem)//这部分一用for循环就会读取失败，所以只能一个个都写出来
 				{
 					case 0: pStudent[nStu].nID    		= atol(str.c_str());
 							nMem++;	  break;
