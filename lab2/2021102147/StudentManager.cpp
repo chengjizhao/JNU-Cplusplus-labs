@@ -1,4 +1,4 @@
-#include "ManagerSystem.h"
+﻿#include "ManagerSystem.h"
 #include "Student.h"
 
 #include <iostream>
@@ -11,6 +11,7 @@ void printMenu();
 
 int main()
 {
+	
 	ManagerSystem ms;
 	if (!ms.isReady())
 	{
@@ -92,6 +93,7 @@ int main()
 						else
 						{
 							cout << "保存失败\n\n";
+							break;
 						}
 					}
 					else if ((yn == "n" || yn == "N"))
@@ -101,6 +103,7 @@ int main()
 						return 0;
 					}
 				}
+				break;
 			}
 			else
 			{
