@@ -50,7 +50,7 @@ void readCSV(const std::string& filename) {
          student.studentId = cells[0];
          student.name = cells[1];
          student.major = cells[2];
-         student.score = NULL;
+         student.score = NULL; //检测到空成绩时自动填入0，防止该条数据被清除
          students.push_back(student);}
  }
  }
@@ -75,7 +75,7 @@ void writeCSV(const std::string& filename) {
 void queryScore(const std::string& studentId) {
  for (const auto& student : students) {
  if (student.studentId == studentId) {
-     if(student.score == 0){std::cout << "学号为 " << studentId << " 的学生成绩没有录入" << std::endl;
+     if(student.score == 0){std::cout << "学号为 " << studentId << " 的学生成绩没有录入" << std::endl; //检测到0时默认成绩没有录入
          return;
      }
      else{std::cout << "学生 " << student.name << " 的成绩为 " << student.score << std::endl;}
@@ -83,7 +83,7 @@ void queryScore(const std::string& studentId) {
  }
      
  }
- std::cout << "学号为 " << studentId << " 的学生成绩没有录入,请录入成绩" << std::endl;
+ std::cout << "学号为 " << studentId << " 的学生成绩没有录入,请录入成绩" << std::endl; //没找到学号时，输出该语句
 }
 
 void addScore(const std::string& studentId, int score) {
