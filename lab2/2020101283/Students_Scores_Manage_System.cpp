@@ -7,38 +7,38 @@
 using namespace std;
 
 
-//¶¨ÒåStudentÀà
+//å®šä¹‰Studentç±»
 struct Student {
-    std::string name;//std::stringÊÇC++±ê×¼¿âÖĞµÄÒ»¸öÀà£¬ÓÃÓÚ±íÊ¾¿É±ä³¤¶ÈµÄ×Ö·û´®
+    std::string name;//std::stringæ˜¯C++æ ‡å‡†åº“ä¸­çš„ä¸€ä¸ªç±»ï¼Œç”¨äºè¡¨ç¤ºå¯å˜é•¿åº¦çš„å­—ç¬¦ä¸²
     std::string major;
-    std::map<std::string, int> scores;// ÉùÃ÷ ±íscores,´æ´¢·ÖÊı
+    std::map<std::string, int> scores;// å£°æ˜ è¡¨scores,å­˜å‚¨åˆ†æ•°
 };
 
 
 
 /******************************************************************************
-* º¯ Êı Ãû       : ReadCSV
-* º¯Êı¹¦ÄÜ       : ¶ÁÈ¡CSVÎÄ¼ş
-* Êä    Èë       : ÎÄ¼şÃû
-* Êä    ³ö       : ÎŞ
+* å‡½ æ•° å       : ReadCSV
+* å‡½æ•°åŠŸèƒ½       : è¯»å–CSVæ–‡ä»¶
+* è¾“    å…¥       : æ–‡ä»¶å
+* è¾“    å‡º       : æ— 
 ******************************************************************************/
 
 std::map<int, Student> ReadCSV(const std::string& filename) {
     string fname = "D:\\test.csv";
-    //ÒÔ¶ÁÈë·½Ê½´ò¿ªÎÄ¼ş
+    //ä»¥è¯»å…¥æ–¹å¼æ‰“å¼€æ–‡ä»¶
     ifstream csv_data(fname, ios::in);
 
     if (!csv_data.is_open())
     {
-        cout << "´ò¿ªÎÄ¼şÊ§°Ü" << endl;
+        cout << "æ‰“å¼€æ–‡ä»¶å¤±è´¥" << endl;
         exit(1);
     }
     else {
         string line;
         std::map<int, Student> students;
-        //getline(csv_data, line);// ¶ÁÈ¡±êÌâĞĞ
+        //getline(csv_data, line);// è¯»å–æ ‡é¢˜è¡Œ
 
-        // °´ĞĞ¶ÁÈ¡Êı¾İ
+        // æŒ‰è¡Œè¯»å–æ•°æ®
         while (getline(csv_data, line))
         {
             istringstream iss(line);
@@ -60,7 +60,7 @@ std::map<int, Student> ReadCSV(const std::string& filename) {
                 int i = 0;
                 for (i = 3;i < tokens.size();i++)
                 {
-                    students[studentID].scores["ÊµÑé" + to_string(i - 2)] = std::stoi(tokens[i]);
+                    students[studentID].scores["å®éªŒ" + to_string(i - 2)] = std::stoi(tokens[i]);
                 }
             }
            
@@ -76,7 +76,7 @@ std::map<int, Student> ReadCSV(const std::string& filename) {
 void WriteCSV(const std::string& filename, const std::map<int, Student>& students) {
     std::ofstream file(filename);
 
-    // Ğ´ÈëÑ§ÉúÊı¾İ
+    // å†™å…¥å­¦ç”Ÿæ•°æ®
     for (const auto& entry : students) {
         file << entry.first << "," << entry.second.name << "," << entry.second.major;
 
@@ -95,7 +95,7 @@ void AddScore(std::map<int, Student>& students, int studentID, const std::string
     if (students.find(studentID) != students.end()) {
         students[studentID].scores[experiment] = score;
 
-        WriteCSV("D:\\test.csv", students);  // ½«³É¼¨Ğ´ÈëCSVÎÄ¼ş
+        WriteCSV("D:\\test.csv", students);  // å°†æˆç»©å†™å…¥CSVæ–‡ä»¶
     }
 }
 
@@ -106,23 +106,23 @@ void CalSco()
     std::string filename = "D:\\test.csv";
     std::map<int, Student> students = ReadCSV(filename);
     int Cal = 0,studentID;
-    std::cout << "ÊäÈëÑ§ÉúID£º";
+    std::cout << "è¾“å…¥å­¦ç”ŸIDï¼š";
     std::cin >> studentID;
     if (students.find(studentID) != students.end()) {
         for (const auto& score : students[studentID].scores) {
             Cal += score.second;
         }
-        cout << "¸ÃÑ§Éú×Ü³É¼¨Îª" << Cal << endl;
+        cout << "è¯¥å­¦ç”Ÿæ€»æˆç»©ä¸º" << Cal << endl;
     }
 }
 
 
 
 /******************************************************************************
-* º¯ Êı Ãû       : main
-* º¯Êı¹¦ÄÜ       : Ö÷º¯Êı
-* Êä    Èë       : ÎŞ
-* Êä    ³ö       : ÎŞ
+* å‡½ æ•° å       : main
+* å‡½æ•°åŠŸèƒ½       : ä¸»å‡½æ•°
+* è¾“    å…¥       : æ— 
+* è¾“    å‡º       : æ— 
 ******************************************************************************/
 int main() {
     std::string filename = "D:\\test.csv";
@@ -130,48 +130,48 @@ int main() {
 
     int choice;
     do {
-        std::cout << "1.°´Ñ§ºÅ²éÑ¯·ÖÊı" << std::endl;
-        std::cout << "2.°´Ñ§ºÅÌí¼Ó³É¼¨" << std::endl;
-        std::cout << "3.°´Ñ§ºÅ¼ÆËã×Ü³É¼¨" << std::endl;
-        std::cout << "4.ÍË³ö" << std::endl;
-        std::cout << "ÊäÈëÄúµÄÑ¡Ôñ£º";
+        std::cout << "1.æŒ‰å­¦å·æŸ¥è¯¢åˆ†æ•°" << std::endl;
+        std::cout << "2.æŒ‰å­¦å·æ·»åŠ æˆç»©" << std::endl;
+        std::cout << "3.æŒ‰å­¦å·è®¡ç®—æ€»æˆç»©" << std::endl;
+        std::cout << "4.é€€å‡º" << std::endl;
+        std::cout << "è¾“å…¥æ‚¨çš„é€‰æ‹©ï¼š";
         std::cin >> choice;
 
-        //°´Ñ§ÉúID²éÑ¯·ÖÊı
+        //æŒ‰å­¦ç”ŸIDæŸ¥è¯¢åˆ†æ•°
         if (choice == 1) {
             int studentID;
-            std::cout << "ÊäÈëÑ§ÉúID£º";
+            std::cout << "è¾“å…¥å­¦ç”ŸIDï¼š";
             std::cin >> studentID;
 
             if (students.find(studentID) != students.end()) {
-                std::cout << "Ñ§ÉúĞÕÃû£º " << students[studentID].name << std::endl;
-                std::cout << "×¨Òµ£º " << students[studentID].major << std::endl;
+                std::cout << "å­¦ç”Ÿå§“åï¼š " << students[studentID].name << std::endl;
+                std::cout << "ä¸“ä¸šï¼š " << students[studentID].major << std::endl;
                 for (const auto& score : students[studentID].scores) {
-                    std::cout << score.first << ": " << score.second << std::endl;//Êä³ö¸÷´ÎÊµÑé³É¼¨
+                    std::cout << score.first << ": " << score.second << std::endl;//è¾“å‡ºå„æ¬¡å®éªŒæˆç»©
                 }
             }
             else {
-                std::cout << "Î´ÕÒµ½Ñ§Éú£¡" << std::endl;
+                std::cout << "æœªæ‰¾åˆ°å­¦ç”Ÿï¼" << std::endl;
             }
         }
 
-        //°´Ñ§ºÅÌí¼Ó³É¼¨
+        //æŒ‰å­¦å·æ·»åŠ æˆç»©
         else if (choice == 2) {
             int studentID;
-            std::cout << "ÊäÈëÑ§ÉúID£º ";
+            std::cout << "è¾“å…¥å­¦ç”ŸIDï¼š ";
             std::cin >> studentID;
 
             std::string experiment;
-            std::cout << "ÊäÈëÊµÑéÃû³Æ£¨ÒÔ¡°ÊµÑé+ÊµÑéĞòºÅ¡±ÃüÃû£©£º";
+            std::cout << "è¾“å…¥å®éªŒåç§°ï¼ˆä»¥â€œå®éªŒ+å®éªŒåºå·â€å‘½åï¼‰ï¼š";
             std::cin.ignore();
             std::getline(std::cin, experiment);
 
             int score;
-            std::cout << "ÊäÈë·ÖÊı£º ";
+            std::cout << "è¾“å…¥åˆ†æ•°ï¼š ";
             std::cin >> score;
 
-            AddScore(students, studentID, experiment, score);//¼Óµ½½á¹¹
-            WriteCSV(filename, students);//Ğ´½øÎÄ¼ş
+            AddScore(students, studentID, experiment, score);//åŠ åˆ°ç»“æ„
+            WriteCSV(filename, students);//å†™è¿›æ–‡ä»¶
         }
 
         else if (choice == 3)
