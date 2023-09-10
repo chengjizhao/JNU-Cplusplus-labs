@@ -1,0 +1,6 @@
+```c++
+union Name{
+	string english;
+	wstring others;
+};
+```
