@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-    linkstudent H = (linkstudent)malloc(sizeof(student));
+    linkstudent H = new student;
     readFile(H);//把文件数据载入内存，方便后续读取
 
     cout<<"|************************************************************************|"<<endl;
@@ -90,6 +90,15 @@ int main()
 
             case 5:
             {
+                linkstudent p=H->Next;
+                delete H;
+                while (p!=NULL)
+                {
+                    linkstudent q = p;
+                    p=p->Next;
+                    delete []q->labScore;
+                    delete q;
+                }             
                 exit(0);
                 break;
             }    
