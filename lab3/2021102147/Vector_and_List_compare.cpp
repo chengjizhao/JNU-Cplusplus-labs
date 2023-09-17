@@ -4,14 +4,12 @@
 #include <ctime>
 #include <cstdlib>
 
-std::vector<int>vec(50);
-std::list<int>li(50);
-
 using std::cin;
 using std::cout;
 using std::endl;
-using std::list;
-using std::vector;
+
+std::vector<int>vec(50);
+std::list<int>li(50);
 
 int main()
 {
@@ -40,7 +38,6 @@ int main()
 	}
 	vector_time = clock() - start;
 
-	// list有所不同，它存储的数据不连续，不能使用加法来定位
 	start = clock();
 	size = 50;
 	auto iter_li = li.begin();
