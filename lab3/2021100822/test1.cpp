@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;  // 使用标准命名空间
+
+const int NUM_ELEMENTS = 100000;  // 要插入的元素数量
+
+int main() {
+    vector<int> myVector;
+    list<int> myList;
+
+    // 使用当前时间作为随机数种子
+    srand(static_cast<unsigned int>(time(nullptr)));
+
+    // 向vector插入元素并测量时间
+    clock_t start_time = clock();
+    for (int i = 0; i < NUM_ELEMENTS; ++i) {
+        int random_value = rand();
+        myVector.insert(myVector.begin() + (rand() % (myVector.size() + 1)), random_value);
+    }
+    clock_t end_time = clock();
+    double vector_insert_time = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+
+    // 向list插入元素并测量时间
+    start_time = clock();
+    for (int i = 0; i < NUM_ELEMENTS; ++i) {
+        int random_value = rand();
+        myList.insert(next(myList.begin(), rand() % (myList.size() + 1)), random_value);
+    }
+    end_time = clock();
+    double list_insert_time = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+
+    cout << "向vector插入"<< NUM_ELEMENTS << " 个元素所需时间: " << vector_insert_time << " 秒\n";
+    cout << "向list插入 " << NUM_ELEMENTS << " 个元素所需时间: " << list_insert_time << " 秒\n";
+
+    return 0;
+}
