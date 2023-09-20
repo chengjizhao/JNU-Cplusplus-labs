@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main() {
+    const int numElements = 100000; // 要插入的元素数量
+    vector<int> vec;
+    list<int> lst;
+    
+    // 随机生成要插入的元素
+    srand(time(nullptr));
+    for (int i = 0; i < numElements; ++i) {
+        int randomValue = rand();
+        
+        // 在vector中插入元素
+        clock_t startVec = clock();
+        vec.insert(vec.begin() + rand() % vec.size(), randomValue);
+        clock_t endVec = clock();
+        
+        // 在list中插入元素
+        clock_t startList = clock();
+        lst.insert(next(lst.begin(), rand() % lst.size()), randomValue);
+        clock_t endList = clock();
+        
+        // 输出时间
+        cout << "Inserting into vector took " << (double)(endVec - startVec) / CLOCKS_PER_SEC << " seconds." << endl;
+        cout << "Inserting into list took " << (double)(endList - startList) / CLOCKS_PER_SEC << " seconds." << endl;
+    }
+    
+    return 0;
+}
