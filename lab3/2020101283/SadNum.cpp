@@ -1,34 +1,33 @@
 #include <iostream>
-#include<vector>
 using namespace std;
 
 int SadNumJudge(int n)
 {
-	while(n>9)//Ñ­»·ÖÁnÎª¸öÎ»Êı£¬¼´¿ÉÍË³öÑ­»·£¬ÒòÎªÒÑ¾­ÎŞ·¨²ğ·Ö 
+	while(n>9)//å¾ªç¯è‡³nä¸ºä¸ªä½æ•°ï¼Œå³å¯é€€å‡ºå¾ªç¯ï¼Œå› ä¸ºå·²ç»æ— æ³•æ‹†åˆ† 
 	{ 
-	int a = n%10;//È¡¸öÎ»Êı 
-    int b = n/10%10;//È¡Ê®Î»Êı 
-    int c = n/100%10;//È¡°ÙÎ»Êı 
-    n = a*a+b*b+c*c;
-    }
+	int a = n%10;//å–ä¸ªä½æ•° 
+	int b = n/10%10;//å–åä½æ•° 
+	int c = n/100%10;//å–ç™¾ä½æ•° 
+	n = a*a+b*b+c*c;
+	}
 	return n; 
 }
 
 int main()
 {
-	cout << "ĞÒ¸£µÄÊı£º" << endl;
-    for (int i = 1; i <= 1000; i++) {
+	cout << "å¹¸ç¦çš„æ•°ï¼š" << endl;
+	for (int i = 1; i <= 1000; i++) 
+	{
         if (SadNumJudge(i)!=1)
-            cout << i << " ";
-    }
-    cout << endl;
+        cout << i << " ";
+    	}
+	cout << endl;
 
-    cout << "ÓÇÉËµÄÊı£º" << endl;
-    for (int i = 1; i <= 1000; i++) {
+    	cout << "å¿§ä¼¤çš„æ•°ï¼š" << endl;
+    	for (int i = 1; i <= 1000; i++) {
         if (SadNumJudge(i)==1)
             cout << i << " ";
-    }
-    cout << endl;
-
-    return 0;
+    	}
+    	cout << endl;
+    	return 0;
 } 
