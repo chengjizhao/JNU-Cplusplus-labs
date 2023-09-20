@@ -16,17 +16,13 @@ int SadNumJudge(int n)
 int main()
 {
 	cout << "幸福的数：" << endl;
-	for (int i = 1; i <= 1000; i++) 
-	{
-        if (SadNumJudge(i)!=1)
-        cout << i << " ";
+	for (int i = 1; i <= 1000; i++) {
+        if (SadNumJudge(i)!=1)cout << i << " ";
     	}
-	cout << endl;
 
-    	cout << "忧伤的数：" << endl;
+    	cout << "\n忧伤的数：" << endl;
     	for (int i = 1; i <= 1000; i++) {
-        if (SadNumJudge(i)==1)
-            cout << i << " ";
+        if (SadNumJudge(i)==1)cout << i << " ";
     	}
     	cout << endl;
     	return 0;
