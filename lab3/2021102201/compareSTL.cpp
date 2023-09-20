@@ -5,10 +5,10 @@
 #include <vector>
 
 using namespace std;
-const int N = 10086; //×Ô¶¨ÒåÔ¤ÉèÖµ
-const int M = 100; //×Ô¶¨ÒåÖØ¸´´ÎÊı
+const int N = 10086; //è‡ªå®šä¹‰é¢„è®¾å€¼
+const int M = 10; //è‡ªå®šä¹‰é‡å¤æ¬¡æ•°
 
-int CurrentTime() //Éú³ÉºÁÃë¼¶Ê±¼ä£¬²¢·µ»ØÊ±¼äÊıÖµ
+int CurrentTime() //ç”Ÿæˆæ¯«ç§’çº§æ—¶é—´ï¼Œå¹¶è¿”å›æ—¶é—´æ•°å€¼
 {
 	SYSTEMTIME sys;
 	GetLocalTime(&sys);
@@ -19,38 +19,38 @@ int RandNum(int currentTime)
 {
 	unsigned seed;
 	seed = currentTime;
-	srand(seed); //Éú³ÉËæ»úÊı
-	int randRes = 0; //±£´æËæ»úÊı½á¹ûµÄ±äÁ¿
+	srand(seed); //ç”Ÿæˆéšæœºæ•°
+	int randRes = 0; //ä¿å­˜éšæœºæ•°ç»“æœçš„å˜é‡
 reRand:
 	randRes = rand();
-	if (randRes > N) //Èç¹ûËæ»úÊı´óÓÚÔ¤ÉèÖµ£¬ÔòÖØĞÂÉú³É
+	if (randRes > N) //å¦‚æœéšæœºæ•°å¤§äºé¢„è®¾å€¼ï¼Œåˆ™é‡æ–°ç”Ÿæˆ
 	{
 		goto reRand;
 	}
-	return randRes; //·µ»ØËæ»úÊı½á¹û
+	return randRes; //è¿”å›éšæœºæ•°ç»“æœ
 }
 
 int RunList(int randRes)
 {
-	list<int> List(N , 0); //´´½¨Ò»¸ölistÈİÆ÷
+	list<int> List(N , 0); //åˆ›å»ºä¸€ä¸ªlistå®¹å™¨
 	list<int>::iterator i;
 	int tmp = 0;
-	int startTime = CurrentTime(); //¼ÇÂ¼¿ªÊ¼Ê±¼ä
-	for (i = List.begin(); i != List.end(); i++) //±éÀúÈİÆ÷
+	int startTime = CurrentTime(); //è®°å½•å¼€å§‹æ—¶é—´
+	for (i = List.begin(); i != List.end(); i++) //éå†å®¹å™¨
 	{
-		if (tmp == randRes) //µ±±éÀúµ½Ä¿±êÎ»ÖÃÊ±²åÈëÊı¾İ
+		if (tmp == randRes) //å½“éå†åˆ°ç›®æ ‡ä½ç½®æ—¶æ’å…¥æ•°æ®
 		{
 			List.insert(i, 1);
-			break; //²åÈëÍê³ÉºóÌø³öÑ­»·
+			break; //æ’å…¥å®Œæˆåè·³å‡ºå¾ªç¯
 		}
 		tmp++;
 	}
-	int endTime = CurrentTime(); //¼ÇÂ¼½áÊøÊ±¼ä
-	int deltaTime = endTime - startTime; //¼ÆËãÊ±¼ä²î
-	return deltaTime; //·µ»ØÊ±¼ä²î
+	int endTime = CurrentTime(); //è®°å½•ç»“æŸæ—¶é—´
+	int deltaTime = endTime - startTime; //è®¡ç®—æ—¶é—´å·®
+	return deltaTime; //è¿”å›æ—¶é—´å·®
 }
 
-int RunVector(int randRes) //×¢ÊÍÍ¬RunListº¯Êı
+int RunVector(int randRes) //æ³¨é‡ŠåŒRunListå‡½æ•°
 {
 	vector<int> Vector(N, 0);
 	vector<int>::iterator i;
@@ -74,22 +74,22 @@ int main()
 	int listTime = 0;
 	int vectorTime = 0;
 Again:
-	for (int i = 0; i < M; i++) //¶à´ÎÔËĞĞ£¬¼ÇÂ¼×ÜÊ±¼ä£¬±ÜÃâÅ¼È»ĞÔ
+	for (int i = 0; i < M; i++) //å¤šæ¬¡è¿è¡Œï¼Œè®°å½•æ€»æ—¶é—´ï¼Œé¿å…å¶ç„¶æ€§
 	{
 		int currentTime = CurrentTime();
-		int randRes = RandNum(currentTime); //½« Éú³ÉËæ»úÊıµÄº¯Êı·µ»ØÖµ ¸³¸øÒ»¸ö±äÁ¿
+		int randRes = RandNum(currentTime); //å°† ç”Ÿæˆéšæœºæ•°çš„å‡½æ•°è¿”å›å€¼ èµ‹ç»™ä¸€ä¸ªå˜é‡
 		int listTimeTmp = RunList(randRes);
 		int vectorTimeTmp = RunVector(randRes);
 		listTime += listTimeTmp;
 		vectorTime += vectorTimeTmp;
 	}
-	cout << "listÖ´ĞĞ" << M << "´Î×ÜËÙ¶ÈÎª£º" << listTime << endl << "vectorÖ´ĞĞ" << M << "´Î×ÜËÙ¶ÈÎª£º" << vectorTime << endl << "µ¥Î»£ººÁÃë" << endl;
-	if (listTime > vectorTime) cout << "vectorÖ´ĞĞËÙ¶È½Ï¿ì" << endl;
-	else if (listTime < vectorTime) cout << "listÖ´ĞĞËÙ¶È½Ï¿ì" << endl;
-	else cout << "Á½ÕßËÙ¶È¸ÕºÃÒ»Ñù" << endl;
+	cout << "listæ‰§è¡Œ" << M << "æ¬¡æ€»é€Ÿåº¦ä¸ºï¼š" << listTime << endl << "vectoræ‰§è¡Œ" << M << "æ¬¡æ€»é€Ÿåº¦ä¸ºï¼š" << vectorTime << endl << "å•ä½ï¼šæ¯«ç§’" << endl;
+	if (listTime > vectorTime) cout << "vectoræ‰§è¡Œé€Ÿåº¦è¾ƒå¿«" << endl;
+	else if (listTime < vectorTime) cout << "listæ‰§è¡Œé€Ÿåº¦è¾ƒå¿«" << endl;
+	else cout << "ä¸¤è€…é€Ÿåº¦åˆšå¥½ä¸€æ ·" << endl;
 	cout << endl;
 	int a = 0;
-	cout << "ÊÇ·ñÖØÊÔ£¬°´1¼ÌĞø£º" << endl;
+	cout << "æ˜¯å¦é‡è¯•ï¼ŒæŒ‰1ç»§ç»­ï¼š" << endl;
 	cin >> a;
 	if (a == 1) goto Again;
 	return 0;
