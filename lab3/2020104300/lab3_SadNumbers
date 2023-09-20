@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+	int n = 321; // 给定一个整数
+	int rightNum; // 最右边一位数字
+	int sum = 0; // 初始化和为0
+
+	while (n){
+		rightNum =  n % 10; // 取最右边一位数字
+		sum += rightNum * rightNum; // 每次循环，加上最右边一位的数字的平方。
+		n /= 10; // 除去右边一位, 其他位数字，再次进入循环，直到取出每一位数字
+	}
+
+cout << sum << endl;
+}
