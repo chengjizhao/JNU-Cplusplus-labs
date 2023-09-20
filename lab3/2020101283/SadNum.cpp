@@ -8,7 +8,8 @@ int SadNumJudge(int n)
 	int a = n%10;//取个位数 
 	int b = n/10%10;//取十位数 
 	int c = n/100%10;//取百位数 
-	n = a*a+b*b+c*c;
+	int d = n/1000%10;//取千位数 
+    	n = a*a+b*b+c*c+d*d;
 	}
 	return n; 
 }
