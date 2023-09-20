@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using std::cin, std::cout, std::endl, std::vector;
