@@ -13,28 +13,28 @@ double begin_time, end_time;
 
 int main()
 {
-	cout << "µ±Ç°³õÊ¼ÈİÁ¿£º" << Begin_num << "£¬" << "²åÈëÊıÁ¿£º" << Insert_num << endl;
+	cout << "å½“å‰åˆå§‹å®¹é‡ï¼š" << Begin_num << "ï¼Œ" << "æ’å…¥æ•°é‡ï¼š" << Insert_num << endl;
 	//vector
 	vector<int> my_vector(Begin_num);
-		begin_time = clock();//»ñÈ¡¿ªÊ¼Ê±¼ä 
-		for (int j = 0; j < Insert_num; j++) 
-			my_vector.insert(my_vector.begin() + (rand() % my_vector.size()), 1);
-		end_time = clock();//»ñÈ¡½áÊøÊ±¼ä
-		cout << "vectorÓÃÊ±£¨ms£©£º"; 
-		cout << (double)((end_time - begin_time) / 1000) << endl;
+	begin_time = clock();//è·å–å¼€å§‹æ—¶é—´ 
+	for (int j = 0; j < Insert_num; j++) 
+		my_vector.insert(my_vector.begin() + (rand() % my_vector.size()), 1);
+	end_time = clock();//è·å–ç»“æŸæ—¶é—´
+	cout << "vectorç”¨æ—¶ï¼ˆmsï¼‰ï¼š"; 
+	cout << (double)((end_time - begin_time) / 1000) << endl;
 	
 	
 	//list
 	list<int> my_list(Begin_num);
-		list<int>::iterator it;
-		it = my_list.begin();
-		begin_time = clock();//»ñÈ¡¿ªÊ¼Ê±¼ä 
-		for (int j = 0; j < Insert_num; j++)
-		{
-			for (int i = 0; i < rand(); i ++) it ++;
-			my_list.insert(it, 1);
-		}
-		end_time = clock();//»ñÈ¡½áÊøÊ±¼ä 
-		cout << "listÓÃÊ±£¨ms£©£º"; 
-		cout << (double)((end_time - begin_time) / 1000) << endl;
+	list<int>::iterator it;
+	it = my_list.begin();
+	begin_time = clock();//è·å–å¼€å§‹æ—¶é—´ 
+	for (int j = 0; j < Insert_num; j++)
+	{
+		for (int i = 0; i < rand(); i ++) it ++;
+		my_list.insert(it, 1);
+	}
+	end_time = clock();//è·å–ç»“æŸæ—¶é—´ 
+	cout << "listç”¨æ—¶ï¼ˆmsï¼‰ï¼š"; 
+	cout << (double)((end_time - begin_time) / 1000) << endl;
 }
