@@ -1,5 +1,5 @@
 #include<iostream>
-#include<vector>
+#include<set>
 using namespace std;
 int sum_of_squares(int num)
 {
@@ -12,7 +12,7 @@ int sum_of_squares(int num)
     }
     return sum;
 }
-int judge_sad(int num, vector<int>& Vector)
+int judge_sad(int num, set<int>& Set)
 {
     if (num == 1)
     {
@@ -20,16 +20,16 @@ int judge_sad(int num, vector<int>& Vector)
     }
     else
     {
-        for (const auto& n : Vector)
+        auto it = Set.find(num);
         {
-            if (n == num)
+            if (it != Set.end())
             {
                 return 0;
             }
         }
-        Vector.push_back(num);
+        Set.insert(num);
         int sum = sum_of_squares(num);
-        return judge_sad(sum, Vector);
+        return judge_sad(sum, Set);
     }
 }
 int main()
@@ -38,7 +38,7 @@ int main()
     cout << "1000以内忧伤的数：" << endl;
     for (int i=1; i<=1000; i++)
     {
-        vector<int> sad;
+        set<int> sad;
         if(judge_sad(i, sad))
         {
             cout << i << " ";
@@ -48,7 +48,7 @@ int main()
     cout << "1000以内幸福的数：" << endl;
     for (int i=1; i<=1000; i++)
     {
-        vector<int> happy;
+        set<int> happy;
         if(!judge_sad(i, happy))
         {
             cout << i << " ";
