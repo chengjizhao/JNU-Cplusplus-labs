@@ -4,10 +4,9 @@
 #include<iterator>
 #include<sys/time.h>
 using namespace std;
-const int count = 100;
+const int count = 10000;
 int c_random(int min,int max) {
     int R = (rand() % (max - min +1)) + min;
-    cout << R << " " << endl;
     return R;
 }
 void vector_insert(vector<int>& Vector, int number) {
