@@ -1,1 +1,37 @@
+#include <stdio.h>
+#include <iostream>
+#include <string>
+
+int test()
+{
+	int x = 100;
+	return &x;
+}
+
+int main(viod)
+{
+	int *a; 
+	int x=1;
+	char p;
+	char data[] = {1,2,3,4,5,6};
+	int *q;
+
+	q=data;	
+	//将指针转换为不匹配的类型，属于是对指针的非法类型转换，也会发生segmentation fault
+    //更改：指向值的一个类型的指针可以转换为指向另一类型的指针。 但是，由于对齐需求和存储中不同类型的大小，结果可能是未定义的。 指向对象的指针可转换为指向其类型要求小于或等于严格存储对齐的对象的指针，然后再次返回而不做更改。指针值也可以根据规则转换为整数值。 
+	
+
+    free(a);
+	a = &x;
+	//segmentation fault：使用的指针指针地址被释放（野指针）。
+	
+	a = NULL;
+	//或者指针地址设置为空（空指针）
+
+	strcpy(p,"hello world");
+	//使用数组超出了定义范围
+
+	return 0;
+
+}
 
