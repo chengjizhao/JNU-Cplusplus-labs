@@ -1,0 +1,134 @@
+#include <iostream>
+#include <istream>
+#include <streambuf>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <string>
+#include <stdlib.h>
+using namespace std;
+
+void enter()
+{
+	char sNum[30];            
+	char sScore[20];          
+	cout << "请输入学生学号：";   
+	cin >> sNum;              
+	cout << "请输入录入学生分数：";        //定义了字符数组sNum和sScor，分别用于储存学号和分数
+	cin >> sScore;                         //cin获取输入的学号和分数
+    
+	
+	ifstream csv_data("文件.csv", ios::in);//打开名为“test.csv"的CSV文件
+	string line;
+	
+	if (!csv_data.is_open())               //检查是否打开成功打开错误则退出程序
+	{
+		cout << "错误：读取文件失败" << endl;
+		exit(1);
+	}
+	
+	
+	istringstream sin;
+	vector<vector<string> > datas;
+	string word;
+	vector<string> words;
+	
+	while (getline(csv_data, line))
+	{
+		sin.clear();
+		sin.str(line);
+		words.clear();
+		int flag = 0;
+		while (getline(sin, word, ','))
+		{
+			flag += 1;
+			words.push_back(word);
+		}
+		if (flag == 10) 
+			words.push_back("--");
+		if (words[0] == sNum) 
+			words.push_back(sScore);
+		datas.push_back(words);
+	}
+	csv_data.close();                                    
+	
+	ofstream outFile;
+	outFile.open("文件.csv", ios::out | ios::trunc);     //打开“test.csv"文件
+	for (int i = 0; i < datas.size(); i ++)
+	{
+		for (int j = 0; j < datas[i].size(); j ++)
+		{
+			outFile << datas[i][j] << ',';
+		}
+		outFile << endl;
+	}                                                    
+	outFile.close();
+	
+	cout << "学生成绩录入成功！\n" << endl;             //输出录入成功的提示信息
+}
+
+void search()
+{
+	char sNum[20];
+	cout << "请输入学号：";
+	cin >> sNum;
+	
+	ifstream csv_data("文件.csv", ios::in);
+	string line;
+	
+	if (!csv_data.is_open())
+	{
+		cout << "错误：打开文件失败" << endl;
+		exit(1);
+	}
+	
+	istringstream sin;
+	vector<string> words;
+	string word;
+	
+	while (getline(csv_data, line))
+	{
+		sin.clear();
+		sin.str(line);
+		words.clear();
+		while (getline(sin, word, ',')) words.push_back(word);
+
+		if (words[0] == sNum)
+		{
+			cout << "\n学号：" << words[0]
+				 << "\n姓名：" << words[1]
+				 << "\n专业：" << words[4]
+				 << "\n成绩：";
+			for (int k = 11; k < words.size(); k ++) cout << words[k] << " ";
+			cout << endl;
+		}
+	}
+	csv_data.close();	
+}
+
+
+int main()
+{
+	struct student
+	{
+		char num[30];
+		char name[20];
+		char space[30];
+		int score;
+	}s1;
+	int q = 1;
+	char choice;
+	while (q)
+	{
+		cout << "请选择要进行的操作（s：查询；e：录入；q：退出）：";
+		cin >> choice;
+		switch (choice)
+		{
+			case 's': search(); break;
+			case 'e': enter(); break;
+			case 'q': q = 0; break;
+		}
+	}
+	//设置操作选项：查询、录入和退出。
+	return 0;
+}

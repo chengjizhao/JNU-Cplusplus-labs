@@ -1,0 +1,63 @@
+STL常见容器
+
+序列式容器
+
+1. vector（array）
+
+vector, vector 与数组array类似。
+
+array不可改变容器的大小，遇到空间不足的情况需要创造更大的空间，并把之前的数据拷贝到新空间中，array是存储在栈中的，所以速度更快。
+
+vector使用更加灵活的动态空间来进行配置。在空间不足的时候，vector可以自动扩展空间容纳新元素，做到按需供给。在扩充空间的过程中仍然需要的是，重新分配空间、移动数据、释放原空间
+
+使用场景：需要存储的数据大小规模未知
+
+2. deque（queue、stack）
+
+deque是双端开口的容器。与vector不同，deque没有容量的概念。deque是动态地以分段连续空间组合而成。所以一旦需要增加新的空间，只需要配置一段连续的空间，然后拼接在头部或者尾部就好。
+
+stack是单端开口的容器，先进后出的数据结构，只能通过栈顶来进行元素的获取和删除，相当于是deque的变式。
+
+queue也是单端开口的容器，先进先出的数据结构，只能通过队首进行元素的操作。
+
+stack和queue都不提供迭代器，只能在开口的位置访问元素。
+
+使用场景：
+1.队列：数据需要进行“先进先出”处理时，用队列会比较方便
+2.栈：进行“先进后出”处理，采用栈
+
+3. List
+
+list是环状双向链表，相当于vector的连续空间，list的空间是分散的，好处就是，每次插入或者删除一个元素，就可以配置或者释放一个元素的空间，对空间的利用很精确，不浪费。
+
+forward_list是C++11中实现的单向链表，其他方面与list的差异不大。
+
+使用场景：当数据之间有明显一对一前后联系时，采用链表会便于查找和插入
+
+关联式容器
+
+1.map/set
+
+map中所以的元素都是pair类型，它拥有key和value两个属性，是一种一对一的关系。map中的元素会根据键值来进行自动排序。map的底层实现是红黑树，在插入的时候调用的是红黑树中的insert_unique()函数，所以不能有重复元素。
+
+set的底层实现也是使用红黑树，但是set的key和value是相等的。
+
+使用场景：当需要使用非int类型的数据作为下标时，可以使用map
+
+2. multimap/multiset
+
+multimap与multiset底层使用的都是红黑树，只不过在插入元素的时候，调用的是红黑树的insert_equal()函数，所以可以有重复元素。
+
+3. hashtable
+
+hashtable也就是哈希表，常见的解决哈希冲突的方法有几种。1：线性探测法、开链法、再散列法、二次探测法。
+
+STL中采用的是开链法，每个bucket维护一个list，遇到冲突的时候，按顺序存在这个list中。bucket则用vector来存储。hashtable在设置的时候内置了28个质数。在创建哈希表的时候，会根据存入元素的个数，选择不小于那个元素的质数来作为hashtable的容量，也就是bucket vector的长度。
+
+当hashtable中的元素超过了容量之后，就要进行重建table操作，也就是重新选择一个质数，再创造新的bucket vector，重新计算hashtable的位置。
+
+4. unordered_map/unordered_set
+
+unordered_map和unordered_set底层使用的是hashtable，而不是红黑树，所以他们没有自动排序的功能。
+
+unordered_mutlimap与unordered_multiset同理，就是调用的插入函数不同，insert_equal()与insert_unique()。
