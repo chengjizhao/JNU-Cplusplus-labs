@@ -25,7 +25,7 @@ else if(n<=10)
 }  
   
   
-// 判断数字是否是忧伤的，使用深度优先搜索  
+//通过循环求取拆分后的平方和判断是否为忧伤  
 bool isSad(int n) {  
     int p;
     p=sumOfSquares(n);
