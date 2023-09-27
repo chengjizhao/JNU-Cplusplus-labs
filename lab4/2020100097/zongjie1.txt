@@ -1,0 +1,21 @@
+第五章
+三种循环，for，while，do while。
+for和while循环,先检查测试条件,再执行循环体。
+do while循环，先执行一遍循环体，再检查测试条件。
+俩种终止，break，continue。
+break，跳出循环。
+continue，结束当前循环，进入下一次循环。
+
+第六章
+分支，if，else，switch。
+if，如果成立，执行，若不成立，else判断，依次类推。
+switch，选择，每一个case要有break语句。
+
+第七章
+函数定义、函数调用、函数参数、返回值、函数重载、执行函数代码。
+
+第八章
+常量引用、作用域、生存期，auto、register、static、extern、const。
+
+第九章
+全局定义，类，数据成员，函数，指针，空间位置。
