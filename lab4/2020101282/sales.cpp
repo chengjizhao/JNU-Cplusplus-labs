@@ -1,4 +1,4 @@
-// sales.cpp
+//实现文件
 #include "sales.h"
 #include <iostream>
 
