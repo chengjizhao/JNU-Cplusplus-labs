@@ -1,4 +1,4 @@
-// sales.h
+// 头文件
 #pragma once
 
 namespace SALES {
