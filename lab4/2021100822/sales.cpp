@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits>
 #include "sales.h"
+
 namespace SALES {
     void setSales(Sales &s, const double ar[], int n) {
         double total = 0.0;
