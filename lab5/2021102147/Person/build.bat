@@ -1,9 +1,10 @@
 @echo off
-g++ --version > nul
 
 set all=
 
 setlocal enabledelayedexpansion
+
+g++ --version > nul
 
 if %errorlevel% equ 0 (
 	mkdir build
