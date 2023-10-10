@@ -1,4 +1,5 @@
 #include "header.h"
+#include <iostream>
 
 
 void cIPprocessor::data_Process()
@@ -34,6 +35,8 @@ void cIPprocessor::data_Process()
         for(int i=0; i<length-5; i++)
         {
             aData[i] = buffer[i+5];
+            std::cout << std::hex << aData[i] << " " ;
         }
+        std::cout << std::endl;
     }
 }
