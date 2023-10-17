@@ -15,7 +15,7 @@ IP::IP(vector<uint8_t>& ip_packet){
     this->tos = ip_packet[1];
     this->tolallen = (ip_packet[2]<<8)|(ip_packet[3]);
     this->identification = (ip_packet[4]<<8)|(ip_packet[5]);
-    this->flag = ip_packet[6]>>1;
+    this->flag = ip_packet[6]>>5;
     this->offset = ((ip_packet[6]&0x1f)<<8)|(ip_packet[7]);
     this->ttl = ip_packet[8];
     this->protocol = ip_packet[9];
