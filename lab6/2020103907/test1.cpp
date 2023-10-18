@@ -25,7 +25,7 @@ int main() {
     MyClass obj;
     FriendClass friendObj;
     
-     // 通过函数指针调用私有成员函数（这是错误的）
+    void (MyClass::*privateFunctionPtr)() = &MyClass::privateFunction;// 通过函数指针调用私有成员函数（这是错误的）
     
     //正确调用方法
     obj.callPrivateFunction(); //通过公有成员函数间接调用私有成员函数
