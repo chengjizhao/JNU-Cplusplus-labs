@@ -4,8 +4,9 @@ class Myclass
 {
     private:
     int a=10;
-    public:
     void f();
+    public:
+    //void f();
 };
 void Myclass::f()
 {
