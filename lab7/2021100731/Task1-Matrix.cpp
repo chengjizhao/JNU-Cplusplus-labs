@@ -10,7 +10,7 @@ class Matrix
 private:
     int row_;       //行数
     int column_;    //列数
-    bool dimension_error_flag = 0;   //出现维度错误则次项置1
+    bool dimension_error_flag = 0;   //出现维度错误则此项置1
     vector<float> mat_;
 
     /***************************************************
