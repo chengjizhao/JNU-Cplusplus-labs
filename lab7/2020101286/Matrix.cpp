@@ -3,12 +3,11 @@
 
 class Matrix {
 private:
-    std::vector<std::vector<int>> data; // 二维向量存储矩阵数据
+    std::vector<std::vector<int>> data;
 
 public:
     Matrix(const std::vector<std::vector<int>>& matrixData) : data(matrixData) {}
 
-    // 重载运算符+
     Matrix operator+(const Matrix& other) const {
         int rows = data.size();
         int cols = data[0].size();
@@ -23,7 +22,6 @@ public:
         return result;
     }
 
-    // 重载运算符-
     Matrix operator-(const Matrix& other) const {
         int rows = data.size();
         int cols = data[0].size();
@@ -38,7 +36,6 @@ public:
         return result;
     }
 
-    // 重载运算符*
     Matrix operator*(const Matrix& other) const {
         int m = data.size();
         int n = other.data[0].size();
@@ -56,7 +53,6 @@ public:
         return result;
     }
 
-    // 重载运算符<<，实现直接输出矩阵
     friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
         for (const auto& row : matrix.data) {
             for (const auto& element : row) {
