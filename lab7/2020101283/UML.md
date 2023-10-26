@@ -1,6 +1,6 @@
 ```mermaid
 classDiagram
-    class Shape{
+    class Shape {
         +getArea(): double
         +getPerimeter(): double
     }
