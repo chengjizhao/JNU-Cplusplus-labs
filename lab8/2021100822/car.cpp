@@ -2,12 +2,12 @@
 #include <string>
 
 class Car {
-private:
+protected:
     std::string brand;
     std::string model;
     double basePrice;
 
-public:
+公共:
     // 构造函数，用于初始化品牌、型号和基础价格
     Car(std::string brand, std::string model, double basePrice)
         : brand(brand), model(model), basePrice(basePrice) {}
@@ -18,8 +18,8 @@ public:
     }
 };
 
-class Sedan : public Car {
-public:
+class Sedan : 公共 Car {
+公共:
     // Sedan类的构造函数，调用基类Car的构造函数进行初始化
     Sedan(std::string brand, std::string model, double basePrice)
         : Car(brand, model, basePrice) {}
@@ -30,8 +30,8 @@ public:
     }
 };
 
-class SUV : public Car {
-public:
+class SUV : 公共 Car {
+公共:
     // SUV类的构造函数，调用基类Car的构造函数进行初始化
     SUV(std::string brand, std::string model, double basePrice)
         : Car(brand, model, basePrice) {}
@@ -48,8 +48,8 @@ int main() {
     SUV suv("Brand2", "Model2", 30000.0);
 
     // 调用各自对象的calculatePrice()函数并打印价格
-    std::cout << "Sedan Price: " << sedan.calculatePrice() <<"元"<< std::endl;
-    std::cout << "SUV Price: " << suv.calculatePrice() << "元"<<std::endl;
+    std::cout << "Sedan Price: " << sedan.calculatePrice() << "元" << std::endl;
+    std::cout << "SUV Price: " << suv.calculatePrice() << "元" << std::endl;
 
     return 0;
 }
