@@ -1,14 +1,14 @@
 #include <iostream>
 
 class One {
-public:
+公共:
     virtual void run() {
         std::cout << "One::run()正在运行..." << std::endl;
     }
 };
 
-class Two : public One {
-public:
+class Two : 公共 One {
+公共:
     void run() override {
         std::cout << "Two::run()正在运行..." << std::endl;
     }
@@ -25,6 +25,5 @@ int main() {
     One_ptr->run(); // 调用 One_ptr->run()，虚函数表的作用
     std::cout << &(One::run) << std::endl;
     std::cout << &(Two::run) << std::endl;
-    //std::cout << One_ptr->run << std::endl;
     return 0;
 }
