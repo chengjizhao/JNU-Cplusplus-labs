@@ -17,6 +17,4 @@ classDiagram
 
    Car <|-- Sedan
    Car <|-- SUV
-
-   Sedan : +Sedan(seatCount:int)
-   SUV : +SUV(cargoVolume:int)
+```
