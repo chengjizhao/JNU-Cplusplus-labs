@@ -1,6 +1,5 @@
 #include <iostream>
 
-// 基类 Vehicle
 class Vehicle {
 protected:
     int speed;
@@ -13,7 +12,6 @@ public:
     }
 };
 
-// 派生类 Car
 class Car : virtual public Vehicle {
 public:
     Car(int s) : Vehicle(s) {}
@@ -23,7 +21,6 @@ public:
     }
 };
 
-// 派生类 Boat
 class Boat : virtual public Vehicle {
 public:
     Boat(int s) : Vehicle(s) {}
@@ -33,7 +30,6 @@ public:
     }
 };
 
-// 虚继承解决菱形继承问题的类 AmphibiousVehicle
 class AmphibiousVehicle : public Car, public Boat {
 public:
     AmphibiousVehicle(int s) : Vehicle(s), Car(s), Boat(s) {}
