@@ -17,6 +17,7 @@ public:
 };
 ~~~
 ~~~cpp
+//主函数
 int main()
 {   
     Normal_Class dummy1;
@@ -51,3 +52,6 @@ int main()
 > testFunc is called!
 
 可见实际输出与预期相符合。
+
+### 内存结构模型
+![Normal_Class](D:\C++Files\Homework\work10\2021100731\pics\1_Normal_Class.png)
