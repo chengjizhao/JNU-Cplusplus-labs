@@ -1,0 +1,152 @@
+//1. 一般类对象
+//内存布局：按照声明的顺序，将类成员变量存储在连续的内存块中。
+class MyClass {  
+public:  
+    int a;  
+    double b;  
+};  
+  
+int main() {  
+    MyClass obj;  
+    obj.a = 10;  
+    obj.b = 20.5;  
+    return 0;  
+}
+//这段代码创建了一个名为obj的MyClass对象，并对其成员变量进行了赋值。
+
+
+//2. 继承类对象
+//内存布局：子类的内存布局在父类的内存布局基础上进行了扩展。子类会添加自己的成员变量，但不会覆盖父类的成员变量。  
+class Parent {  
+public:  
+    int a;  
+};  
+  
+class Child : public Parent {  
+public:  
+    double b;  
+};  
+  
+int main() {  
+    Child obj;  
+    obj.a = 10;  
+    obj.b = 20.5;  
+    return 0;  
+}
+//这段代码创建了一个名为obj的Child对象，并对其成员变量进行了赋值。obj继承了Parent类的a成员变量，并添加了b成员变量。
+
+
+//3. 带虚函数的类对象
+//内存布局：在类对象中添加一个指向虚函数表的指针（vptr），虚函数表中的每个条目都是一个指向虚函数的指针。在运行时，根据对象的实际类型来链接到对应的虚函数。  
+class MyClass {  
+public:  
+    virtual void foo() {}  
+};  
+  
+int main() {  
+    MyClass obj;  
+    ((MyClass*)&obj)->foo(); // 调用虚函数 foo()  
+    return 0;  
+}
+//这段代码创建了一个名为obj的MyClass对象，并通过强制类型转换来调用虚函数foo()。
+
+
+//4.基类有虚函数的子类对象
+//基类具有虚函数时，子类对象会继承这个虚函数表，并可以重写基类的虚函数。在运行时，根据对象的实际类型来调用对应的虚函数。
+#include <iostream>  
+  
+class Base {  
+public:  
+    virtual void foo() { std::cout << "Base::foo\n"; }  
+};  
+  
+class Derived : public Base {  
+public:  
+    void foo() override { std::cout << "Derived::foo\n"; }  
+};  
+  
+int main() {  
+    Base* ptr = new Derived();  
+    ptr->foo(); // 输出 "Derived::foo" 因为 ptr 实际上是指向 Derived 对象的 Base 指针，而 Derived 类重写了 foo() 函数。这就是多态性的体现。  
+    delete ptr; // 释放内存  
+    return 0;  
+}
+这段代码中，Base类有一个虚函数foo()，而Derived类继承了Base类并重写了foo()函数。在main()函数中，我们创建了一个Base类型的指针ptr，但实际上它指向的是一个Derived对象。当我们通过这个Base指针调用foo()函数时，会执行Derived类中的foo()函数，因为Derived类重写了这个函数。这就是多态性的体现。
+
+
+//5.基类有虚函数且子类有自己的更多的虚函数的类对象
+//当基类具有虚函数，而子类有自己的更多的虚函数时，子类对象会继承基类的虚函数表，并可以重写基类的虚函数以及添加自己的更多的虚函数。在运行时，根据对象的实际类型来调用对应的虚函数。
+#include <iostream>  
+  
+class Base {  
+public:  
+    virtual void foo() { std::cout << "Base::foo\n"; }  
+};  
+  
+class Derived : public Base {  
+public:  
+    virtual void foo() override { std::cout << "Derived::foo\n"; }  
+    void bar() { std::cout << "Derived::bar\n"; }  
+};  
+  
+int main() {  
+    Base* ptr = new Derived();  
+    ptr->foo(); // 输出 "Derived::foo" 因为 ptr 实际上是指向 Derived 对象的 Base 指针，而 Derived 类重写了 foo() 函数。这就是多态性的体现。  
+    ((Derived*)ptr)->bar(); // 输出 "Derived::bar" 因为我们将 ptr 强制转换为 Derived 指针类型，然后调用 Derived 类中的 bar() 函数。  
+    delete ptr; // 释放内存  
+    return 0;  
+}
+//这段代码中，Base类有一个虚函数foo()，而Derived类继承了Base类并重写了foo()函数，同时添加了一个新的虚函数bar()。在main()函数中，我们创建了一个Base类型的指针ptr，但实际上它指向的是一个Derived对象。当我们通过这个Base指针调用foo()函数时，会执行Derived类中的foo()函数，因为Derived类重写了这个函数。这就是多态性的体现。接着，我们将ptr强制转换为Derived指针类型，然后调用Derived类中的bar()函数。这展示了子类可以添加自己的更多的虚函数。最后别忘了释放内存。
+
+
+//6. 多继承的类对象
+//当一个类继承多个类时，会创建一个新的类，该类具有所有基类的成员。在C++中，可以使用“:”运算符来实现多继承。
+#include <iostream>  
+  
+class A {  
+public:  
+    void funcA() { std::cout << "A::funcA\n"; }  
+};  
+  
+class B {  
+public:  
+    void funcB() { std::cout << "B::funcB\n"; }  
+};  
+  
+class C : public A, public B {  
+public:  
+    void funcC() { std::cout << "C::funcC\n"; }  
+};  
+  
+int main() {  
+    C c;  
+    c.funcA(); // 输出 "A::funcA" 因为 C 继承了 A 类。  
+    c.funcB(); // 输出 "B::funcB" 因为 C 继承了 B 类。  
+    c.funcC(); // 输出 "C::funcC" 因为 C 类有自己的成员函数。  
+    return 0;  
+}
+//这段代码中，类C继承了类A和类B，因此可以访问它们的成员函数。同时，类C也有自己的成员函数funcC()。
+
+
+//7.  虚基类的类对象
+//当一个基类被多个派生类共享时，可以使用虚基类来避免多次实例化同一基类。在C++中，可以使用“virtual”关键字来声明虚基类。
+#include <iostream>  
+  
+class Base {  
+public:  
+    virtual void foo() { std::cout << "Base::foo\n"; }  
+};  
+  
+class Derived1 : public Base {  
+public:  
+    void foo() override { std::cout << "Derived1::foo\n"; }  
+};  
+  
+classDerived2 : public Base {  
+public:  
+    void foo() override { std::cout << "Derived2::foo\n"; }  
+};  
+  
+int main() {  
+    Base* ptr = new Derived1(); // 输出 "Derived1::foo" 因为 ptr 实际上是指向 Derived1 对象的 Base 指针，而 Derived1 类重写了 foo() 函数。这就是多态性的体现。  
+    ((Derived1*)ptr)->foo(); // 输出 "Derived1::foo" 因为我们将 ptr 强制转换为 Derived1 指针类型，然后调用 Derived1 类中的 foo() 函数。这就是多态性的体现。但是，这里存在一个问题：在 Derived2 中，我们期望使用虚函数表来调用 Base 类中的 foo() 函数，但是由于 Base 是虚基类，因此 Derived2 中没有虚函数表，而是直接调用了 Base 类中的 foo() 函数。为了解决这个问题，我们需要在 Derived2 类中添加一个虚函数，例如：void bar() override {} 这样就可以在 Derived2 中创建虚函数表了。然后我们就可以使用 Derived2 类的对象来调用 Base 类中的 foo() 函数了。
