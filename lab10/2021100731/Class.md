@@ -39,9 +39,9 @@ int main()
 
 
 ### 输出
->This is ClassSize: 4
->This is ClassAddr: 0x61fe04
->This is ParamAddr: 0x61fe04
->This is FuncAddr : 0x61fdf0
->testFunc is called!
+> This is ClassSize: 4
+> This is ClassAddr: 0x61fe04
+> This is ParamAddr: 0x61fe04
+> This is FuncAddr : 0x61fdf0
+> testFunc is called!
 可见实际输出与预期相符合。
