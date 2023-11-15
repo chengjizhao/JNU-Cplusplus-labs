@@ -40,10 +40,14 @@ int main()
 
 ### 输出
 > This is ClassSize: 4
-This is ClassAddr: 0x61fe04
-This is ParamAddr: 0x61fe04
-This is FuncAddr : 0x61fdf0
-testFunc is called!
+> 
+> This is ClassAddr: 0x61fe04
+>
+> This is ParamAddr: 0x61fe04
+>
+> This is FuncAddr : 0x61fdf0
+>
+> testFunc is called!
 
 可见实际输出与预期相符合。
 
@@ -109,13 +113,20 @@ int main()
 
 ### 输出
 > This is ClassSize    : 8
-This is ClassAddr    : 0x61fdf8
-This is ParamAddrBase: 0x61fdf8
-This is ParamAddrSub : 0x61fdfc
-This is FuncAddrBase : 0x61fde0
-This is FuncAddrSub  : 0x61fdd0
-BaseFunc is called!
-SubFunc is called!
+> 
+> This is ClassAddr    : 0x61fdf8
+> 
+> This is ParamAddrBase: 0x61fdf8
+> 
+> This is ParamAddrSub : 0x61fdfc
+> 
+> This is FuncAddrBase : 0x61fde0
+> 
+> This is FuncAddrSub  : 0x61fdd0
+> 
+> BaseFunc is called!
+> 
+> SubFunc is called!
 
 可见该对象的大小为8，代表父类的变量param_Base与子类的变量param_Sub大小之和。
 
@@ -175,13 +186,20 @@ int main()
 
 ### 输出
 > This is vTableSize   : 16
-This is vTableAddr   : 0x4045b0
-This is ClassAddr    : 0x61fde0
-This is ParamAddr    : 0x61fde8
-This is FuncAddrNorm : 0x61fdd0
-This is FuncAddrVirt : 4206272
-normalFunc is called!
-virtualFunc is called!
+>
+> This is vTableAddr   : 0x4045b0
+>
+> This is ClassAddr    : 0x61fde0
+>
+> This is ParamAddr    : 0x61fde8
+>
+> This is FuncAddrNorm : 0x61fdd0
+>
+> This is FuncAddrVirt : 4206272
+>
+> normalFunc is called!
+>
+> virtualFunc is called!
 
 值得注意的是，用0x61fde8减去0x61fde0，可见虚表地址的大小长度为8个字节，而int类型变量param的大小是4个字节，那么该类的大小应当是12字节。可能是由于内存对齐，使该类的大小被扩大为16字节。
 
@@ -257,17 +275,27 @@ int main()
 ```
 
 ### 输出
->This is ClassSize   : 16      
-This is vTableAddr   : 0x405640
-This is ClassAddr    : 0x61fde0
-This is ParamAddrBase: 0x61fde8
-This is ParamAddrSub : 0x61fdec
-This is FuncAddrSub  : 0x61fdc0
-This is FuncAddrNorm : 0x61fdd0
-This is FuncAddrVirt : 4206464
-SubFunc is called!
-normalFunc is called!
-virtualFunc is called!
+> This is ClassSize   : 16      
+> 
+> This is vTableAddr   : 0x405640
+> 
+> This is ClassAddr    : 0x61fde0
+> 
+> This is ParamAddrBase: 0x61fde8
+> 
+> This is ParamAddrSub : 0x61fdec
+> 
+> This is FuncAddrSub  : 0x61fdc0
+> 
+> This is FuncAddrNorm : 0x61fdd0
+> 
+> This is FuncAddrVirt : 4206464
+> 
+> SubFunc is called!
+> 
+> normalFunc is called!
+> 
+> virtualFunc is called!
 
 此时，子类中的结构顺序如下：虚表地址指针（8位），父类变量指针（4位），子类变量指针（4位）。
 
@@ -315,18 +343,30 @@ public:
 
 ### 输出
 > This is ClassSize    : 16
-This is vTableAddr   : 0x405660
-This is ClassAddr    : 0x61fdd0
-This is ParamAddrBase: 0x61fdd8
-This is ParamAddrSub : 0x61fddc
-This is FuncAddrSub  : 0x61fdb0
-This is FuncAddrNorm : 0x61fdc0
-This is vBaseFuncAddr: 4206544
-This is vBaseFuncAddr: 4206704
-SubFunc is called!
-normalFunc is called!
-vFuncBase is called!
-vFuncSub is called!
+> 
+> This is vTableAddr   : 0x405660
+> 
+> This is ClassAddr    : 0x61fdd0
+> 
+> This is ParamAddrBase: 0x61fdd8
+> 
+> This is ParamAddrSub : 0x61fddc
+> 
+> This is FuncAddrSub  : 0x61fdb0
+> 
+> This is FuncAddrNorm : 0x61fdc0
+> 
+> This is vBaseFuncAddr: 4206544
+> 
+> This is vBaseFuncAddr: 4206704
+> 
+> SubFunc is called!
+> 
+> normalFunc is called!
+> 
+> vFuncBase is called!
+> 
+> vFuncSub is called!
 
 可见，只要获取了虚表的地址，就可以通过令虚表地址不断加1来实现对虚函数具体位置指针的遍历与虚函数的调用。
 
@@ -374,16 +414,26 @@ public:
 
 ### 输出
 > This is ClassSize     : 12
-This is ClassAddr     : 0x61fdec
-This is ParamAddrBase1: 0x61fdec
-This is ParamAddrBase2: 0x61fdf0
-This is ParamAddrSub  : 0x61fdf4
-This is FuncAddrBase1 : 0x61fdd0
-This is FuncAddrBase2 : 0x61fdc0
-This is FuncAddrSub   : 0x61fdb0
-bFunc1 is called!
-bFunc2 is called!
-sFunc is called!
+> 
+> This is ClassAddr     : 0x61fdec
+> 
+> This is ParamAddrBase1: 0x61fdec
+> 
+> This is ParamAddrBase2: 0x61fdf0
+> 
+> This is ParamAddrSub  : 0x61fdf4
+> 
+> This is FuncAddrBase1 : 0x61fdd0
+> 
+> This is FuncAddrBase2 : 0x61fdc0
+> 
+> This is FuncAddrSub   : 0x61fdb0
+> 
+> bFunc1 is called!
+> 
+> bFunc2 is called!
+> 
+> sFunc is called!
 
 这时，系统似乎会根据继承的顺序来决定哪个父类的成员变量放在较前的位置。
 
@@ -445,10 +495,14 @@ int main()
 
 ### 输出
 > This is ClassSize          : 40
-This is ClassAddr          : 0x61fdd0
-This is Param_Mid-Top1_Addr: 0x61fdf0
-This is Param_Mid-Top2_Addr: 0x61fdf0
-This is Param_Bot_Addr     : 0x61fdec
+> 
+> This is ClassAddr          : 0x61fdd0
+> 
+> This is Param_Mid-Top1_Addr: 0x61fdf0
+> 
+> This is Param_Mid-Top2_Addr: 0x61fdf0
+> 
+> This is Param_Bot_Addr     : 0x61fdec
 
 可见两个中间层父类对象的首地址皆为同一个顶层父对象的成员变量，这说明在此继承过程中只产生了一个顶层父类对象。若不使用虚基类，则将会出现两个不同的顶层父类对象。
 ### 内存结构模型
