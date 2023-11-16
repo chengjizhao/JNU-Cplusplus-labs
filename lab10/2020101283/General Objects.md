@@ -56,8 +56,4 @@ VirtualObject --|> DerivedVirtualObject
 BaseObjectWithVirtualFunctions --|> DerivedObjectWithVirtualFunctions
 BaseObjectWithMoreVirtualFunctions --|> DerivedObjectWithMoreVirtualFunctions
 
-@enduml
-
-
-
 ```
