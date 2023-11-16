@@ -4,7 +4,7 @@ class BaseObject {
     +int x;
 }
 
-class DerivedObject : public BaseObject {
+class DerivedObject {
     +float y;
 }
 ```
