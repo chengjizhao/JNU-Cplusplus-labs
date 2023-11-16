@@ -10,7 +10,7 @@ class BaseObject {
   - x: int
 }
 
-Class DerivedObject <<Derived>> {
+class DerivedObject <<Derived>> {
   - y: float
 }
 
@@ -19,7 +19,7 @@ class VirtualObject {
   - foo(): void
 }
 
-Class DerivedVirtualObject <<Derived>> {
+class DerivedVirtualObject <<Derived>> {
   - y: float
   - foo(): void
 }
