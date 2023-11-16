@@ -1,4 +1,5 @@
-class GeneralObject {
+```mermaid
+ class GeneralObject {
     +int x;
     +float y;
     +char z;
