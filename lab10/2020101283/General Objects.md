@@ -5,5 +5,4 @@ Class GeneralObject {
   - y: float
   - z: char
 }
-
 ```
