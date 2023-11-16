@@ -49,10 +49,4 @@ Class DerivedObjectWithMoreVirtualFunctions <<Derived>> {
   - bar(): void
   - baz(): void
 }
-
-GeneralObject --|> BaseObject
-BaseObject --|> DerivedObject
-VirtualObject --|> DerivedVirtualObject
-BaseObjectWithVirtualFunctions --|> DerivedObjectWithVirtualFunctions
-BaseObjectWithMoreVirtualFunctions --|> DerivedObjectWithMoreVirtualFunctions
 ```
