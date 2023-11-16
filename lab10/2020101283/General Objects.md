@@ -1,6 +1,6 @@
 ```mermaid
 classDiagram
-Class GeneralObject {
+class GeneralObject {
   - x: int
   - y: float
   - z: char
