@@ -7,3 +7,4 @@ class BaseObject {
 class DerivedObject : public BaseObject {
     +float y;
 }
+```
