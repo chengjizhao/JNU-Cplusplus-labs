@@ -1,14 +1,14 @@
 #include<iostream>
 class Device {
 public:
-    virtual void turnOn() = 0;
+    virtual void turnOn() const = 0;
     virtual ~Device() {}
 };
 
 // 派生类 Computer
-class Computer : virtual public Device {
+class Computer : public Device {
 public:
-    void turnOn() override {
+    void turnOn() const override {
         std::cout<<"Computer is turning on!"<<std::endl;
     }
     void runSoftware() {
@@ -17,9 +17,9 @@ public:
 };
 
 // 派生类 Phone
-class Phone : virtual public Device {
+class Phone : public Device {
 public:
-    void turnOn() override {
+    void turnOn() const override{
         std::cout<<"Phone is turning on!"<<std::endl;
     }
     void makeCall() {
@@ -30,7 +30,7 @@ public:
 // 多继承类 SmartDevice
 class SmartDevice : public Computer, public Phone {
 public:
-    void runApp() {
+    virtual void runApp() {
         std::cout<<"Smart device is runing app!"<<std::endl;
     }
 };
@@ -38,7 +38,8 @@ public:
 
 int main() {
     SmartDevice smartDevice;
-    smartDevice.turnOn();    // 来自 Device 类
+    smartDevice.Phone::turnOn();    // 来自 Device 类
+    smartDevice.Computer::turnOn(); //来自SmartDevice类
     smartDevice.runSoftware(); // 来自 Computer 类
     smartDevice.makeCall();    // 来自 Phone 类
     smartDevice.runApp();      // SmartDevice 特有的方法
