@@ -2,13 +2,13 @@
 ##派生类包含指向自己的虚函数表和指向基类的虚函数表的指针。
 
 class Base {
-公共:
+public:
     virtual void func1() {}
     int data;
 };
 
 class Derived : 公共 Base {
-公共:
+public:
     virtual void func2() {}
     int derivedData;
 };
