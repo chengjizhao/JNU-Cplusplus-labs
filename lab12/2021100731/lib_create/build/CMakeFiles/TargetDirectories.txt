@@ -1,4 +1,0 @@
-D:/C++Files/Homework/work12/lib_create/build/CMakeFiles/add_static.dir
-D:/C++Files/Homework/work12/lib_create/build/CMakeFiles/main.dir
-D:/C++Files/Homework/work12/lib_create/build/CMakeFiles/edit_cache.dir
-D:/C++Files/Homework/work12/lib_create/build/CMakeFiles/rebuild_cache.dir
