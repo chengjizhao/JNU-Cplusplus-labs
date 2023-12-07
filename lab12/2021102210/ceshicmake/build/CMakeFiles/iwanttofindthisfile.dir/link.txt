@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\iwanttofindthisfile.dir/objects.a
+C:\mingw32\bin\ar.exe qc CMakeFiles\iwanttofindthisfile.dir/objects.a @CMakeFiles\iwanttofindthisfile.dir\objects1.rsp
+C:\mingw32\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\iwanttofindthisfile.dir/objects.a -Wl,--no-whole-archive -o iwanttofindthisfile.exe -Wl,--out-implib,libiwanttofindthisfile.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\iwanttofindthisfile.dir\linkLibs.rsp
