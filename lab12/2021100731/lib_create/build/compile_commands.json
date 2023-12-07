@@ -1,0 +1,20 @@
+[
+{
+  "directory": "D:/C++Files/Homework/work12/lib_create/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/add_static.dir/includes_CXX.rsp -g -o CMakeFiles\\add_static.dir\\src\\add\\add.cpp.obj -c D:\\C++Files\\Homework\\work12\\lib_create\\src\\add\\add.cpp",
+  "file": "D:/C++Files/Homework/work12/lib_create/src/add/add.cpp",
+  "output": "CMakeFiles/add_static.dir/src/add/add.cpp.obj"
+},
+{
+  "directory": "D:/C++Files/Homework/work12/lib_create/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -o CMakeFiles\\main.dir\\src\\main.cpp.obj -c D:\\C++Files\\Homework\\work12\\lib_create\\src\\main.cpp",
+  "file": "D:/C++Files/Homework/work12/lib_create/src/main.cpp",
+  "output": "CMakeFiles/main.dir/src/main.cpp.obj"
+},
+{
+  "directory": "D:/C++Files/Homework/work12/lib_create/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -o CMakeFiles\\main.dir\\src\\add\\add.cpp.obj -c D:\\C++Files\\Homework\\work12\\lib_create\\src\\add\\add.cpp",
+  "file": "D:/C++Files/Homework/work12/lib_create/src/add/add.cpp",
+  "output": "CMakeFiles/main.dir/src/add/add.cpp.obj"
+}
+]
