@@ -1,0 +1,98 @@
+//一般类对象：
+//没有继承、虚函数等特性的简单类。其内存布局是成员变量按照声明的顺序排列。
+
+class SimpleClass {
+public:
+    int a;
+    double b;
+    char c;
+};
+//内存布局如下图所示：
++---+---------+---+
+| a |    b    | c |
++---+---------+---+
+
+//继承类对象：
+//一个类继承另一个类，派生类继承基类的成员变量和方法。
+
+class BaseClass {
+public:
+    int x;
+};
+
+class DerivedClass : public BaseClass {
+public:
+    double y;
+};
+//内存布局如下图所示：
++---+---+
+| x | y |
++---+---+
+
+//带虚函数的类对象：
+//包含虚函数的类会有一个虚函数表指针（vptr）作为额外的成员。
+class VirtualClass {
+public:
+    int a;
+    virtual void foo() {}
+};
+//内存布局如下图所示：
++---+---+
+| a |   |   // vptr (指向虚函数表)
++---+---+
+
+//基类有虚函数的子类对象：
+//子类会包含基类的成员变量和虚函数表指针。
+class BaseWithVirtual {
+public:
+    int x;
+    virtual void bar() {}
+};
+
+class DerivedWithVirtual : public BaseWithVirtual {
+public:
+    double y;
+};
+//内存布局如下图所示：
++---+---+---+
+| x |   | y |
++---+---+---+
+
+//基类有虚函数且子类有更多虚函数的类对象：
+//子类的虚函数表会在基类的虚函数表之后，子类的虚函数在虚函数表中按照声明的顺序排列。
+class MoreDerived : public DerivedWithVirtual {
+public:
+    char z;
+    virtual void baz() {}
+};
+//内存布局如下图所示：
++---+---+---+---+
+| x |   | y | z |
++---+---+---+---+
+
+//多继承的类对象：
+//多继承情况下，每个父类的成员变量按照声明的顺序排列。
+class MultipleInheritance : public BaseClass, public VirtualClass {
+public:
+    char c;
+};
+//内存布局如下图所示：
++---+---+---+---------+---+
+| x |   | a |    b    | c |
++---+---+---+---------+---+
+
+//虚基类的类对象：
+//虚基类情况下，派生类包含一个虚基类表指针（vbptr）。
+class VirtualBase {
+public:
+    int v;
+};
+
+class DerivedWithVirtualBase : virtual public VirtualBase {
+public:
+    double w;
+};
+//内存布局如下图所示：
++---+---+
+| v | w |
++---+---+
