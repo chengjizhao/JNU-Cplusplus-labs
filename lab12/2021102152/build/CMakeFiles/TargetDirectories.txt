@@ -1,0 +1,4 @@
+C:/Users/86198/vsCode/build/CMakeFiles/add_static.dir
+C:/Users/86198/vsCode/build/CMakeFiles/main.dir
+C:/Users/86198/vsCode/build/CMakeFiles/edit_cache.dir
+C:/Users/86198/vsCode/build/CMakeFiles/rebuild_cache.dir
