@@ -1,0 +1,2 @@
+C:\mingw64\bin\ar.exe qc lib\libadd_static.a CMakeFiles/add_static.dir/src/add/add.cpp.obj
+C:\mingw64\bin\ranlib.exe lib\libadd_static.a
