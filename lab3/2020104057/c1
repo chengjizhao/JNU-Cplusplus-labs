@@ -1,0 +1,53 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <ctime>
+#include <cstdlib>
+#include <string>
+using namespace std;  
+
+
+int main() 
+{
+    string better;
+    int NUM = 10000;  //设置插入10000个元素，记录两种方式所用时间
+    vector<int> myVector;
+    list<int> myList;
+    srand(static_cast<unsigned int>(time(nullptr))); //时间种子
+
+    // vector：
+    clock_t start_time = clock();
+    for (int i = 0; i < NUM; ++i) 
+    {
+        int random_value = rand();
+        myVector.insert(myVector.begin() + (rand() % (myVector.size() + 1)), random_value);
+    }//使用for循环插入10000个随机数
+
+    clock_t end_time = clock();
+    double vector_time = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+
+    // list：
+    start_time = clock();
+    for (int i = 0; i < NUM; ++i) 
+    {
+        int random_value = rand();
+        myList.insert(next(myList.begin(), rand() % (myList.size() + 1)), random_value);
+    }//同理，使用for循环插入随机数
+
+    end_time = clock();
+    double list_time = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+
+    
+    cout << "向vector插入"<< NUM << " 个元素所需时间: " << vector_time << " 秒\n";
+    cout << "向list插入 " << NUM << " 个元素所需时间: " << list_time << " 秒\n";
+    if(vector_time>list_time)
+    {      better={"list"};    }
+    else{  better={"vector"};  }
+
+    cout<<"vector是单向数组，list是双向数组，同通过时间对比发现"<<better<<"的效率更高"<<endl;
+    
+
+    system("pause");
+    return 0;
+
+}
