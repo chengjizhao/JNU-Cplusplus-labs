@@ -1,0 +1,4 @@
+C:/Users/24495/Desktop/C++/lab12/2020101255/build/CMakeFiles/name1.dir
+C:/Users/24495/Desktop/C++/lab12/2020101255/build/CMakeFiles/main.dir
+C:/Users/24495/Desktop/C++/lab12/2020101255/build/CMakeFiles/edit_cache.dir
+C:/Users/24495/Desktop/C++/lab12/2020101255/build/CMakeFiles/rebuild_cache.dir
