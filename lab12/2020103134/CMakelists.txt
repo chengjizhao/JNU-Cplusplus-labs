@@ -1,0 +1,28 @@
+# 设置最低的 CMake 版本要求
+cmake_minimum_required(VERSION 3.10)
+
+# 定义项目名称
+project(print)
+
+# 添加库的源文件和头文件目录
+set(SOURCES src/print.cpp)
+set(HEADERS include/print.h)
+
+# 添加静态库目标
+add_library(My STATIC ${SOURCES})
+
+# 设置静态库的输出路径
+set_target_properties(My PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build/lib
+)
+
+# 添加可执行文件目标
+add_executable(MyExecutable main.cpp)
+
+# 设置可执行文件依赖的库
+target_link_libraries(MyExecutable PRIVATE My)
+
+# 设置可执行文件的输出路径
+set_target_properties(MyExecutable PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin
+)
