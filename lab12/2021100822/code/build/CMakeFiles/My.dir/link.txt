@@ -1,0 +1,2 @@
+D:\APP\MinGW\mingw64\bin\ar.exe qc build\lib\libMy.a CMakeFiles/My.dir/src/name/my.cpp.obj
+D:\APP\MinGW\mingw64\bin\ranlib.exe build\lib\libMy.a
