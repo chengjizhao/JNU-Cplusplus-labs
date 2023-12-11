@@ -32,7 +32,7 @@ int main()
 		fin >> name >> age;
 		// shared指针一旦被释放，对应的弱指针就会expire
 		// 因此要事先进行保存
-		tmp = std::make_shared<Person>(*(new Person(name, age, addr1)));
+		tmp = std::make_shared<Person>(name, age, addr1);
 		persons_ptr.push_back(tmp);
 		addr1.addPerson(tmp);
 	}
@@ -41,7 +41,7 @@ int main()
 	for (int i = 0; i < 2; ++i)
 	{
 		fin >> name >> age;
-		tmp = std::make_shared<Person>(*(new Person(name, age, addr2)));
+		tmp = std::make_shared<Person>(name, age, addr1);
 		persons_ptr.push_back(tmp);
 		addr2.addPerson(tmp);
 	}

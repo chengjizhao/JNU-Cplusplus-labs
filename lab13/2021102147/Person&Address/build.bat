@@ -21,6 +21,7 @@ if %errorlevel% equ 0 (
 )
 
 if %errorlevel% equ 0 (
+	echo Installing...
 	copy info.txt build
 	echo Compile success
 	pause
