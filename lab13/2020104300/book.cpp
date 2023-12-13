@@ -1,6 +1,3 @@
-下面是一个使用C++的示例程序，其中包含Book和Library类，并实现了添加书籍、删除书籍和显示所有书籍的功能。
-
-cpp
 #include <iostream>  
 #include <vector>  
 #include <memory>  
@@ -59,4 +56,3 @@ int main() {
     std::cout << "Library is empty: " << (library.books.empty() ? "true" : "false") << std::endl; // 输出图书馆是否为空，应为false，因为还有书籍存在  
     return 0;  
 }
-在程序中，使用了shared_ptr来管理Book对象。Library类包含一个vector容器来存储shared_ptr<Book>。通过调用addBook方法向图书馆添加书籍，调用removeBook方法删除书籍，调用displayBooks方法显示所有书籍。在主函数中，首先创建了一个Library对象并添加了三本书。然后调用displayBooks方法显示所有书籍，再调用removeBook方法删除一本书。最后，调用displayBooks方法再次显示所有书籍，并输出图书馆是否为空的信息。在程序结束时，观察对象的销毁顺序，可以看到Library对象先于Book对象被销毁。
