@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\PersonAddressDemo.dir/objects.a
+D:\APP\MinGW\mingw64\bin\ar.exe qc CMakeFiles\PersonAddressDemo.dir/objects.a @CMakeFiles\PersonAddressDemo.dir\objects1.rsp
+D:\APP\MinGW\mingw64\bin\c++.exe -Wl,--whole-archive CMakeFiles\PersonAddressDemo.dir/objects.a -Wl,--no-whole-archive -o PersonAddressDemo.exe -Wl,--out-implib,libPersonAddressDemo.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\PersonAddressDemo.dir\linkLibs.rsp
