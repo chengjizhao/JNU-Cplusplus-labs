@@ -1,0 +1,14 @@
+[
+{
+  "directory": "D:/C++Files/Homework/work13/task1/build",
+  "command": "C:\\mingw64\\bin\\g++.exe -DPerson_Address_EXPORTS @CMakeFiles/Person_Address.dir/includes_CXX.rsp -g -o CMakeFiles\\Person_Address.dir\\src\\main.cpp.obj -c D:\\C++Files\\Homework\\work13\\task1\\src\\main.cpp",
+  "file": "D:/C++Files/Homework/work13/task1/src/main.cpp",
+  "output": "CMakeFiles/Person_Address.dir/src/main.cpp.obj"
+},
+{
+  "directory": "D:/C++Files/Homework/work13/task1/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/runtest.dir/includes_CXX.rsp -g -o CMakeFiles\\runtest.dir\\src\\main.cpp.obj -c D:\\C++Files\\Homework\\work13\\task1\\src\\main.cpp",
+  "file": "D:/C++Files/Homework/work13/task1/src/main.cpp",
+  "output": "CMakeFiles/runtest.dir/src/main.cpp.obj"
+}
+]
