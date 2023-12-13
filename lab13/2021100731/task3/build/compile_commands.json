@@ -1,0 +1,14 @@
+[
+{
+  "directory": "D:/C++Files/Homework/work13/task2/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -o CMakeFiles\\test.dir\\src\\library.cpp.obj -c D:\\C++Files\\Homework\\work13\\task2\\src\\library.cpp",
+  "file": "D:/C++Files/Homework/work13/task2/src/library.cpp",
+  "output": "CMakeFiles/test.dir/src/library.cpp.obj"
+},
+{
+  "directory": "D:/C++Files/Homework/work13/task2/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -o CMakeFiles\\test.dir\\src\\main.cpp.obj -c D:\\C++Files\\Homework\\work13\\task2\\src\\main.cpp",
+  "file": "D:/C++Files/Homework/work13/task2/src/main.cpp",
+  "output": "CMakeFiles/test.dir/src/main.cpp.obj"
+}
+]
