@@ -1,0 +1,12 @@
+unique_ptr
+使用方法：unique_ptr<int> p(new int(42));
+特点：多个unique_ptr无法指向同一对象。unique_ptr的最大优势是超出作用域时会自动释放资源。其实unique_ptr解决的并不只是资源自动释放的问题，同时也解决了两个指针的拷贝、赋值问题(指针的浅拷贝问题)。
+使用场景：unique_ptr适用于需要独占资源的场景
+shared_ptr
+使用方法：shared_ptr<int> p(new int(42));
+特点：shared_ptr多个智能指针可以指向同一个对象，即实现了资源的多指针共享。shared_ptr引入了计数机制，可以通过use_count成员函数查看资源所有者的个数。当一个shared_ptr指向该对象，则计数加一，当一个shared_ptr释放，计数减一。当最后一个指针释放，就释放内存。
+使用场景：shared_ptr适用于多个指针共享同一个对象资源的场景
+weak_ptr
+使用方法：weak_ptr<int> p(q);
+特点：weak_ptr是弱引用智能指针，它可以指向一个对象，但不会增加该对象的引用计数。当对象被销毁时，weak_ptr会自动失效。weak_ptr解决了shared_ptr交叉引用导致资源无法释放的问题。
+使用场景：weak_ptr适用于需要观察一个对象但不需要增加其引用计数的场景
