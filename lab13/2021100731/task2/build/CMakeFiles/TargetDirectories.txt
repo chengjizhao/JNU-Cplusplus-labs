@@ -1,0 +1,4 @@
+D:/C++Files/Homework/work13/task1/build/CMakeFiles/Person_Address.dir
+D:/C++Files/Homework/work13/task1/build/CMakeFiles/runtest.dir
+D:/C++Files/Homework/work13/task1/build/CMakeFiles/edit_cache.dir
+D:/C++Files/Homework/work13/task1/build/CMakeFiles/rebuild_cache.dir
