@@ -1,0 +1,67 @@
+线程：线程是程序中的一个执行路径。每个线程都有自己的栈，并且可以独立地执行代码。
+共享资源：多个线程可能需要同时访问共享资源，如全局变量或数据结构。为了防止数据竞争和不一致，我们需要对共享资源进行同步。
+互斥锁（Mutex）：std::mutex是用于同步线程的工具。它只有一个互斥锁，任何时候只能有一个线程拥有它。如果一个线程需要访问共享资源，它会首先锁定互斥锁。如果互斥锁已经被另一个线程锁定，那么试图锁定互斥锁的线程将会阻塞，直到拥有互斥锁的线程释放它。
+条件变量（Condition Variables）：std::condition_variable是另一种同步工具。它允许一个或多个线程等待某个条件的发生。当条件满足时，等待的线程将被唤醒。
+线程池：线程池是在应用程序启动时创建的一组线程，这些线程在应用程序运行期间会一直存在。它们可以被用于执行重复的或周期性的任务，以提高性能和效率。
+下面是一些使用这些概念的C++代码样例：
+
+例1：使用std::thread进行多线程编程
+
+cpp
+复制代码
+#include <iostream>  
+#include <thread>  
+  
+void worker(int id) {  
+    std::cout << "Worker " << id << " is working\n";  
+}  
+  
+int main() {  
+    std::thread t1(worker, 1); // 创建并启动一个新线程  
+    t1.join(); // 等待t1线程结束  
+    return 0;  
+}
+例2：使用std::mutex进行同步
+
+cpp
+复制代码
+#include <iostream>  
+#include <thread>  
+#include <mutex>  
+  
+std::mutex mtx; // 全局互斥锁  
+int shared_resource = 0; // 共享资源  
+  
+void increment() {  
+    mtx.lock(); // 锁定互斥锁  
+    ++shared_resource; // 访问共享资源  
+    mtx.unlock(); // 释放互斥锁  
+}  
+  
+int main() {  
+    std::thread t1(increment); // 创建并启动一个新线程  
+    t1.join(); // 等待t1线程结束  
+    return 0;  
+}
+例3：使用std::lock_guard进行自动锁管理
+
+cpp
+复制代码
+#include <iostream>  
+#include <thread>  
+#include <mutex>  
+  
+std::mutex mtx; // 全局互斥锁  
+int shared_resource = 0; // 共享资源  
+  
+void increment() {  
+    std::lock_guard<std::mutex> lock(mtx); // 创建一个lock_guard对象来自动管理锁的锁定和释放  
+    ++shared_resource; // 访问共享资源  
+    // lock_guard对象在离开作用域时自动释放锁，无需显式调用mtx.unlock()  
+}  
+  
+int main() {  
+    std::thread t1(increment); // 创建并启动一个新线程  
+    t1.join(); // 等待t1线程结束  
+    return 0;  
+}
