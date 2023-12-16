@@ -1,0 +1,2 @@
+D:\mingw64\bin\ar.exe qc Build\lib\libmyname.a CMakeFiles/myname.dir/SRC/myname.cpp.obj
+D:\mingw64\bin\ranlib.exe Build\lib\libmyname.a
