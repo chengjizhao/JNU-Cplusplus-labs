@@ -1,52 +1,50 @@
-#include <thread>
+#include <iostream>
 #include <vector>
+#include <thread>
+#include <mutex>
 
-bool is_prime(int n) {
-    if (n < 2) {
+bool isPrime(int n) {
+    if (n <= 1)
         return false;
-    }
     for (int i = 2; i * i <= n; i++) {
-        if (n % i == 0) {
+        if (n % i == 0)
             return false;
-        }
     }
     return true;
 }
 
-void sum_of_primes(int start, int end, std::vector<int>& result) {
-    int sum = 0;
+void findPrimes(int start, int end, std::vector<int>& result, std::mutex& mtx) {
     for (int i = start; i <= end; i++) {
-        if (is_prime(i)) {
-            sum += i;
+        if (isPrime(i)) {
+            std::lock_guard<std::mutex> lock(mtx);
+            result.push_back(i);
         }
     }
-    result.push_back(sum);
 }
 
 int main() {
-    std::vector<int> result;
-    int start = 1;
-    int end = 10000;
-    int num_of_threads = 4;
-    int step = (end - start + 1) / num_of_threads;
+    const int numThreads = 5;
+    const int range = 1000;
+    std::vector<int> primes;
     std::vector<std::thread> threads;
-    for (int i = 0; i < num_of_threads; i++) {
-        int thread_start = start + i * step;
-        int thread_end = start + (i + 1) * step - 1;
-        if (i == num_of_threads - 1) {
-            thread_end = end;
-        }
-        std::thread thread(sum_of_primes, thread_start, thread_end, std::ref(result));
-        threads.push_back(std::move(thread));
-        thread.detach();
+    std::mutex mtx;
+
+    int step = range / numThreads;
+    for (int i = 0; i < numThreads; i++) {
+        int start = i * step + 1;
+        int end = (i == numThreads - 1) ? range : (i + 1) * step;
+        threads.push_back(std::thread(findPrimes, start, end, std::ref(primes), std::ref(mtx));
     }
-    for (auto& thread : threads) {
-        thread.join();
+
+    for (auto& t : threads) {
+        t.join();
     }
-    int total = 0;
-    for (auto& sum : result) {
-        total += sum;
+
+    std::cout << "Prime numbers from 0 to 1000: ";
+    for (int prime : primes) {
+        std::cout << prime << " ";
     }
-    std::cout << "The sum of primes from " << start << " to " << end << " is " << total << ".\n";
+    std::cout << std::endl;
+
     return 0;
 }
