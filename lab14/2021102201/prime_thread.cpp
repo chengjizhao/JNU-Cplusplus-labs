@@ -39,10 +39,10 @@ int main()
     int step = range / numThreads;
     for (int i = 0; i < numThreads; i++)
     {
-        //È·¶¨Ò»¸öÏß³ÌµÄËØÊı´¦ÀíÁ¿
+        //ç¡®å®šä¸€ä¸ªçº¿ç¨‹çš„ç´ æ•°å¤„ç†é‡
         int start = i * step + 1;
         int end = (i == numThreads - 1) ? range : (i + 1) * step;
-        //thread(findPrimes, start, end, ref(primes), ref(mtx))£¬ºóÃæµÄstartµÈÊÇfindPrimesµÄ²ÎÊı
+        //thread(findPrimes, start, end, ref(primes), ref(mtx))ï¼Œåé¢çš„startç­‰æ˜¯findPrimesçš„å‚æ•°
         threads.push_back(thread(findPrimes, start, end, ref(primes), ref(mtx)));
     }
 
