@@ -1,4 +1,8 @@
-1.std::thread
+1.多线程基础知识
+多线程编程是一种并发编程的范例，它允许程序同时执行多个线程，以提高程序的性能和响应能力。在C++中，标准库提供了一些用于
+多线程编程的工具，包括std::thread、std::mutex、std::lock_guard、std::condition_variable以及一些与线程相关的其他设施。
+
+2.std::thread
 std::thread 是 C++11 引入的一个类，用于创建和管理线程。你可以使用 std::thread 的构造函数传递一个函数或可调用对象，然后调用 thread.join() 等待线程结束。
 #include <iostream>
 #include <thread>
@@ -13,7 +17,7 @@ int main() {
     return 0;
 }
 
-2.std::mutex 和 std::lock_guard
+3.std::mutex 和 std::lock_guard
 std::mutex 是互斥量，用于保护共享资源，防止多个线程同时访问。
 std::lock_guard 是一个轻量级的 RAII（资源获取即初始化）类，用于自动锁定和解锁互斥量。
 #include <iostream>
@@ -36,7 +40,7 @@ int main() {
     return 0;
 }
 
-3.std::condition_variable
+4.std::condition_variable
 std::condition_variable 是条件变量，用于在多线程间进行线程同步。它与互斥量一起使用，等待某个条件为真时才继续执行。
 #include <iostream>
 #include <thread>
@@ -70,7 +74,7 @@ int main() {
     return 0;
 }
 
-4.线程池
+5.线程池
 线程池是一组维护的线程，可以重复使用来执行多个任务，避免了线程的频繁创建和销毁。C++标准库没有直接提供线程池，但可以使用第三方库（如C++11 ThreadPool库）或手动实现。
 #include <iostream>
 #include <thread>
