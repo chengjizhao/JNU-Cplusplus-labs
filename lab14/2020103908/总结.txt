@@ -1,0 +1,93 @@
+多线程编程是一种并发编程的范例，允许程序同时执行多个线程，以提高性能和资源利用率。在C++中，你可以使用标准库提供的多线程支持来进行多线程编程。以下是一些基本概
+念和相关例程：
+
+1. 多线程基础知识：
+线程（Thread）：
+线程是程序执行的最小单位，是操作系统调度的基本单位。
+多线程允许同时执行多个任务，每个线程拥有独立的执行流。
+并发（Concurrency）：
+并发是指多个任务在同一时间段内执行。
+多线程编程可以通过并发来提高程序的执行效率。
+同步（Synchronization）：
+同步是控制多个线程之间执行顺序的机制，以确保数据的一致性。
+2. C++ 标准库的多线程支持：
+std::thread：
+std::thread 是C++标准库提供的线程类，用于创建和管理线程。
+示例：
+cpp
+#include <iostream>
+#include <thread>
+
+void threadFunction() {
+    std::cout << "Hello from thread!" << std::endl;
+}
+
+int main() {
+    std::thread t(threadFunction);
+    t.join(); // 等待线程结束
+    return 0;
+}
+std::mutex：
+std::mutex 是互斥量，用于在多线程环境中保护共享资源，防止多个线程同时访问。
+示例：
+cpp
+#include <iostream>
+#include <thread>
+#include <mutex>
+
+std::mutex myMutex;
+
+void sharedResourceFunction() {
+    std::lock_guard<std::mutex> lock(myMutex); // 自动上锁和解锁
+    // 访问共享资源的代码
+}
+
+int main() {
+    std::thread t1(sharedResourceFunction);
+    std::thread t2(sharedResourceFunction);
+    t1.join();
+    t2.join();
+    return 0;
+}
+std::lock_guard：
+std::lock_guard 是RAII风格的互斥量锁定器，用于自动管理互斥量的上锁和解锁。
+它确保在作用域结束时自动释放锁。
+std::condition_variable：
+std::condition_variable 是条件变量，用于线程间的同步，允许线程等待某个条件为真时再继续执行。
+示例：
+cpp
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+
+std::mutex myMutex;
+std::condition_variable myCV;
+bool dataReady = false;
+
+void producer() {
+    // 生产数据
+    {
+        std::lock_guard<std::mutex> lock(myMutex);
+        dataReady = true;
+    }
+    myCV.notify_one(); // 通知等待的线程
+}
+
+void consumer() {
+    std::unique_lock<std::mutex> lock(myMutex);
+    myCV.wait(lock, []{ return dataReady; }); // 等待条件满足
+    // 消费数据
+}
+
+int main() {
+    std::thread t1(producer);
+    std::thread t2(consumer);
+    t1.join();
+    t2.join();
+    return 0;
+}
+线程池：
+线程池是一组线程，用于执行任务队列中的任务，以减少线程创建和销毁的开销。
+C++标准库并未提供线程池，但可以使用第三方库（如ThreadPool）或自己实现。
+以上是一些多线程编程的基础概念和相关例程。在实际开发中，确保正确地管理共享资源、处理同步和避免竞态条件是多线程编程的重要方面。
