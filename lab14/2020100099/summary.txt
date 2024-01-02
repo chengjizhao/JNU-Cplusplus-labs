@@ -1,0 +1,49 @@
+多线程编程的基础知识包括以下几个方面：1. 线程的创建和管理：可以使用操作系统提供的API或者使用C++标准库中的std::thread来创建和管理线程。线程的生命周期包括创建、启动、执行和结束等阶段。
+2. 线程同步和互斥：在多线程环境下，需要考虑多个线程同时访问共享资源时可能引发的竞态条件和数据竞争问题。可以使用互斥量（std::mutex）来保护共享资源的访问，确保同一时间只有一个线程可以访问共享资源。
+3. 锁和RAII：std::lock_guard是C++标准库中提供的RAII风格的锁，可以用来自动获取互斥量的锁并在作用域结束时释放锁，避免忘记释放锁导致的死锁问题。
+4. 条件变量：std::condition_variable是C++标准库中用于线程间通信和同步的机制，可以用来在某个条件不满足时等待并在条件变为满足时通知其他线程。
+5. 线程池：线程池是一种用来管理和复用线程的机制，可以提高线程的利用率和降低线程创建和销毁的开销。通过线程池，可以将任务提交给线程池，线程池会在内部管理线程的创建和销毁，并执行提交的任务。
+
+
+相关例程：
+#include <iostream>
+#include <thread>
+#include <mutex>
+
+std::mutex g_mutex;
+void printNumbers(int id) {
+    std::lock_guard<std::mutex> lock(g_mutex);
+    for (int i = 0; i < 5; ++i) {
+        std::cout << "Thread " << id << " : " << i << std::endl;
+    }
+}
+
+int main() {
+    std::thread t1(printNumbers, 1);
+    std::thread t2(printNumbers, 2);
+
+    t1.join();
+    t2.join();
+    
+    return 0;
+}
+
+在这个例程中，创建了两个线程t1和t2，它们同时执行printNumbers函数，并且通过互斥量g_mutex保证线程安全地访问cout。线程t1和t2会交替输出各自的数字，而不会产生竞态条件。
+
+
+#include <iostream>
+#include <thread>
+#include <future>
+
+int multiply(int x, int y) {
+    return x * y;
+}
+
+int main() {
+    std::future<int> result = std::async(multiply, 5, 4);
+    std::cout << "Result: " << result.get() << std::endl;
+    
+    return 0;
+}
+
+这个例程使用了std::async来异步执行multiply函数，返回一个包含函数执行结果的std::future对象。在主线程中，我们通过result.get()来获取异步执行的结果，并输出到标准输出。
