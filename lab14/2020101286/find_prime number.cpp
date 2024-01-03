@@ -33,7 +33,7 @@ int main() {
     for (int i = 0; i < numThreads; i++) {
         int start = i * step + 1;
         int end = (i == numThreads - 1) ? range : (i + 1) * step;
-        threads.push_back(std::thread(findPrimes, start, end, std::ref(primes), std::ref(mtx));
+        threads.push_back(std::thread(findPrimes, start, end, std::ref(primes), std::ref(mtx)));
     }
 
     for (auto& t : threads) {
