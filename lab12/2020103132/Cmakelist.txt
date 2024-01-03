@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)  
+project(MyLib)  
+  
+set(CMAKE_CXX_STANDARD 11)  
+set(CMAKE_CXX_STANDARD_REQUIRED ON)  
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)  
+set(CMAKE_INSTALL_PREFIX /path/to/install) # 设置库的安装路径，如果不需要安装可以注释掉这一行  
+  
+include_directories(${CMAKE_SOURCE_DIR}/include) # 添加头文件路径  
+link_directories(${CMAKE_BINARY_DIR}/lib) # 添加库文件路径  
+add_library(MyLib SHARED ${CMAKE_SOURCE_DIR}/src/my_lib.cpp) # 添加源文件生成库文件  
+add_executable(MyApp ${CMAKE_SOURCE_DIR}/src/main.cpp) # 添加源文件生成可执行文件，假设你的主程序在src/main.cpp中  
+target_link_libraries(MyApp MyLib) # 将MyApp链接到MyLib库文件
