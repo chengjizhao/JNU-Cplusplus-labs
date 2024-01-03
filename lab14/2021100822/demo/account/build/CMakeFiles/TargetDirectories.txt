@@ -1,3 +1,0 @@
-D:/cmake/account/build/CMakeFiles/BankAccountSimulation.dir
-D:/cmake/account/build/CMakeFiles/ALL_BUILD.dir
-D:/cmake/account/build/CMakeFiles/ZERO_CHECK.dir
