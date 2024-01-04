@@ -1,0 +1,10 @@
+^D:\桌面\C++KAOSHI\D3T\BUILD\CMAKEFILES\C4BD5736564E490C7C4B9369DD17CCA0\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/桌面/C++kaoshi/D3T -BD:/桌面/C++kaoshi/D3T/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/桌面/C++kaoshi/D3T/build/jishu.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
