@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/24495/Desktop/C++/lab12/2020101255/build",
+  "command": "C:\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\name1.dir\\Src\\name1.cpp.obj -c C:\\Users\\24495\\Desktop\\C++\\lab12\\2020101255\\Src\\name1.cpp",
+  "file": "C:/Users/24495/Desktop/C++/lab12/2020101255/Src/name1.cpp",
+  "output": "CMakeFiles/name1.dir/Src/name1.cpp.obj"
+},
+{
+  "directory": "C:/Users/24495/Desktop/C++/lab12/2020101255/build",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -o CMakeFiles\\main.dir\\main.cpp.obj -c C:\\Users\\24495\\Desktop\\C++\\lab12\\2020101255\\main.cpp",
+  "file": "C:/Users/24495/Desktop/C++/lab12/2020101255/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.obj"
+}
+]

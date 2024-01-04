@@ -1,49 +1,43 @@
-// 写一个程序比较向量和列表两个容器对元素随机插入支持的优劣。 
-//2 如果把任意一个正整数n分割成单个数字，比如23，拆成2，3个两个数字，
-//然后全部平方并相加，得到一个新数m，本例中m = 2×2 + 3×3=13 
-//如果这个数字m=1，现在是忧伤的，否则，继续进行分割，
-//然后求平方和。本例中就是把13分割继续为：1×1+3×3=10，1×1+0×0=1，
-//最终23经过三次这样的损伤，损失了1，因此23是一个忧伤的数，
-//任务：用程序实现把1000以内的幸福的数和忧虑的数都算出来了。
-//3总结：STL标准容器的特点和典型
- 
-#include<iostream> ;
-#include <vector>  ;
-#include <list> ;
-#include <chrono>;  
-using namespace std;   
+#include <iostream>  
+#include <vector>  
+#include <list>  
+#include <chrono>  
+#include <random>  
 int main() {  
-    // 容器大小  
-    const int container_size = 10000;  
-    // 随机插入位置数组  
+    // 设定随机种子  
+    std::default_random_engine generator(time(nullptr));  
 
-    vector<int> insert_positions;  
+    std::uniform_int_distribution<int> distribution(0, 99);  
+    // 创建向量和列表  
 
-    for (int i = 0; i < container_size; ++i) {  
+    std::vector<int> vec;  
 
-        insert_positions.push_back(rand() % container_size);  
+    std::list<int> lst;  
+    // 向量和列表的大小  
+
+    const int size = 10000;  
+    // 向量和列表的插入时间  
+
+    auto vec_insert_time = std::chrono::high_resolution_clock::now();  
+
+    auto lst_insert_time = std::chrono::high_resolution_clock::now();  
+    // 向向量和列表中插入随机元素  
+
+    for (int i = 0; i < size; ++i) {  
+
+        vec.insert(vec.begin(), distribution(generator));  
+
+        lst.insert(lst.begin(), distribution(generator));  
+
     }  
-    // 向量容器  
-    vector<int> vec(container_size);  
-    auto start = chrono::high_resolution_clock::now();  
-    for (int i = 0; i < container_size; ++i) {  
+    // 计算插入时间  
 
-        vec.insert(vec.begin() + insert_positions[i], i);  
+    auto vec_insert_duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - vec_insert_time);  
+    auto lst_insert_duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - lst_insert_time);  
+    // 输出结果  
 
-    }  
-
-    auto end = chrono::high_resolution_clock::now();  
-    chrono::duration<double> vec_insert_time = end - start;  
-    // 列表容器  
-    list<int> lst(container_size);  
-    start = chrono::high_resolution_clock::now();  
-    for (int i = 0; i < container_size; ++i) {  
-        lst.insert(lst.begin() + insert_positions[i], i);  
-    }  
-    end = chrono::high_resolution_clock::now();  
-    chrono::duration<double> lst_insert_time = end - start;  
-   // 输出结果  
-    cout << "Vector insert time: " << vec_insert_time.count() << " seconds" << endl;  
-    cout << "List insert time: " << lst_insert_time.count() << " seconds" << endl;  
+    std::cout << "Vector insert time: " << vec_insert_duration.count() << " ms" << std::endl;  
+    std::cout << "List insert time: " << lst_insert_duration.count() << " ms" << std::endl;  
     return 0;  
+
 }

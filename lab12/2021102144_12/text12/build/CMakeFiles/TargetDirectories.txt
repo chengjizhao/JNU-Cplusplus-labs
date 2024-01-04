@@ -1,0 +1,4 @@
+C:/Users/lenovo/Desktop/demo/build/CMakeFiles/cheng.dir
+C:/Users/lenovo/Desktop/demo/build/CMakeFiles/text12.dir
+C:/Users/lenovo/Desktop/demo/build/CMakeFiles/edit_cache.dir
+C:/Users/lenovo/Desktop/demo/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,266 @@
+第5章：循环与关系表达式
+ 简单语句：
+1. 表达式语句：最常见的语句类型，执行一个表达式，通常后跟分号，例如 `x = 5;`.
+2. 空语句：由单独的分号组成，通常在语法上需要语句但不需要执行代码时使用，例如 `for (int i = 0; i < 10; ++i);`.
+
+
+ 语句作用域：
+1. 局部作用域：在函数、复合语句或代码块内定义的变量只在其包含的作用域内可见。
+2. 全局作用域：在函数外部定义的变量具有全局作用域，整个程序中可见。
+
+条件语句：
+1. if语句：用于根据条件执行代码块。
+   if (condition) {
+       // code to execute if condition is true
+   } else {
+       // code to execute if condition is false
+   }
+2. switch语句：用于多个情况的选择。
+   switch (expression) {
+       case value1:
+           // code to execute if expression equals value1
+           break;
+       case value2:
+           // code to execute if expression equals value2
+           break;
+       // ...
+       default:
+           // code to execute if none of the cases match
+   }
+   
+循环语句：
+1. while循环：根据条件反复执行代码块，条件在每次迭代之前测试。
+   while (condition) {
+       // code to execute while condition is true
+   }
+2. do...while循环：类似于`while`循环，但条件在每次迭代之后测试，至少执行一次。
+   do {
+       // code to execute at least once
+   } while (condition);
+3. for循环：提供了初始化、条件测试和迭代步骤的语法糖，通常用于已知迭代次数的循环。`for` 循环用于执行一系列语句多次，通常包括初始化、测试条件和更新条件。
+   for (initialization; condition; update) {
+       // code to execute while condition is true
+   }
+
+ 迭代语句：
+1. break语句：用于跳出当前循环或`switch`语句，继续执行之后的代码。
+2. continue语句：用于跳过当前迭代的剩余部分，继续下一次迭代。
+
+跳转语句：
+1. goto语句：允许无条件跳转到程序中的标签，但通常不建议使用，因为它可能导致代码难以理解和维护。
+
+ try语句块和异常处理：
+1. try-catch语句：用于处理异常。`try` 块包含可能引发异常的代码，`catch` 块用于捕获并处理异常。
+   try {
+       // code that may throw an exception
+   } catch (ExceptionType e) {
+       // code to handle the exception
+   }
+2. throw语句：用于抛出异常。异常可以是内置类型或自定义异常类的实例。
+   throw ExceptionType("An error occurred.");
+3. 异常类：C++允许创建自定义异常类，这些类可以继承自`std::exception`类，以便更好地处理异常信息和类型。
+
+ 第6章：函数
+ 函数基础：
+1. 函数定义：函数是独立的代码块，可以执行特定的任务。它们由函数头、函数体和返回类型组成。
+   returnType functionName(parameters) {
+       // function body
+   }
+2. 函数调用：通过函数名和参数列表调用函数，将控制传递给函数执行，可以从函数中获取返回值。
+   result = functionName(arguments);
+3. 函数原型：函数原型（函数声明）告诉编译器函数的存在、参数类型和返回类型，通常放在函数定义之前。
+   returnType functionName(parameters); // 函数原型
+
+参数传递：
+1. 传值调用：函数参数通过复制传递给函数，函数内对参数的修改不影响原始数据。
+2. 传引用调用：函数参数通过引用传递给函数，函数内对参数的修改会影响原始数据。可以使用 `&` 符号创建引用参数。
+   void foo(int &x); // 传引用调用
+3. 传指针调用：函数参数通过指针传递给函数，函数内对指针所指向的数据的修改会影响原始数据。可以使用指针作为参数。
+   void bar(int *ptr); // 传指针调用
+
+ 返回类型和return语句：
+1. 返回值：函数可以返回一个值，类型由函数的返回类型指定。使用 `return` 语句将值返回给调用者。
+   int add(int a, int b) {
+       return a + b;
+   }
+2. 无返回值：如果函数不返回值，可以使用 `void` 作为返回类型，并省略 `return` 语句，或者使用 `return;` 来提前退出函数。
+
+ 函数重载：
+1. 函数重载：C++允许定义多个同名函数，只要它们的参数列表不同，这被称为函数重载。
+   int add(int a, int b);
+   double add(double a, double b);
+2. 函数匹配：编译器根据函数调用的参数类型和数量来选择正确的函数版本，这被称为函数匹配。
+
+ 默认参数：
+1. 默认参数：函数可以具有默认参数，调用时如果没有提供相应参数，则使用默认值。
+   void printInfo(string name = "Unknown", int age = 0);
+2. 默认参数的规则：默认参数必须从右向左依次提供，也就是不可以省略中间的参数而只提供后面的参数。
+
+第7章：类
+类（Class）基础：
+1. 定义类：类是自定义数据类型的蓝图，它可以包含数据成员（属性）和成员函数（方法）。
+   class ClassName {
+   private: // 访问控制
+       // 数据成员
+   public: // 访问控制
+       // 成员函数
+   };
+2. 创建对象：类的对象是类的具体实例，可以通过类名和对象名创建。
+ClassName objectName; // 创建对象
+3. 成员访问：通过成员访问运算符 `.` 来访问对象的成员。
+   objectName.memberFunction(); // 调用成员函数
+   objectName.dataMember = value; // 访问数据成员
+
+ 访问控制与封装：
+1. 访问控制：C++ 提供了 `private`、`protected` 和 `public` 访问控制关键字来限制类成员的可见性和访问权限。
+    `private`：只有类的成员函数可以访问，外部无法访问。
+    `protected`：类的派生类可以访问，但外部无法访问。
+    `public`：外部和派生类均可以访问。
+2. 封装：封装是将类的数据成员和成员函数捆绑在一起，并通过访问控制限制外部对数据的直接访问，提供了数据的安全性和隐藏实现的能力。
+
+ 类的其他特性：
+1. 构造函数：特殊成员函数，用于初始化对象。可以有多个构造函数，具有不同的参数。
+   ClassName(int arg1, double arg2); // 构造函数
+2. 析构函数：特殊成员函数，用于在对象销毁时清理资源。通常用于释放动态分配的内存或关闭文件等。
+   ~ClassName(); // 析构函数
+3. 成员初始化列表：在构造函数中使用成员初始化列表来初始化成员变量，提供更高效的初始化方式。
+   ClassName(int arg1, double arg2) : dataMember1(arg1), dataMember2(arg2) {}
+
+4. 运算符重载：允许自定义类的对象支持常见的运算符，如 `+`、`-`、`==` 等。
+   ClassName operator+(const ClassName& other);
+
+类的作用域：
+1. 类的作用域：类的成员函数可以访问类的私有成员，无需使用限定符，因为它们在同一类作用域内。
+2. 限定符：在类外部访问类的成员时，可以使用成员访问运算符 `::` 来限定成员的作用域。
+   ClassName::publicMember; // 访问类的公有成员
+
+ 类的静态成员：
+1. 静态成员：静态成员属于类本身，而不是类的对象。它们在所有对象之间共享，并且可以通过类名直接访问。
+   class ClassName {
+   public:
+       static int staticMember; // 静态成员
+   };
+2. 静态成员初始化：通常需要在类外部初始化静态成员。
+   int ClassName::staticMember = 0; // 初始化静态成员
+3. 静态成员函数：静态成员函数不依赖于特定对象，可以直接通过类名调用。
+   ClassName::staticMemberFunction(); // 调用静态成员函数
+
+
+第8章：IO类
+ IO类：
+1. iostream库：C++提供了 `iostream` 库，包括 `iostream`、`ifstream`、`ofstream` 类，用于处理输入和输出。
+2. 流对象：`cin` 和 `cout` 是C++的标准输入和输出流对象，用于从键盘读取输入和向屏幕输出。
+3. 流运算符：`>>` 用于从流中读取数据，`<<` 用于将数据写入流。
+   int x;
+   cin >> x; // 从键盘读取整数
+   cout << "Value of x: " << x; // 输出 x 的值
+
+ 文件输入输出：
+1. 文件流对象：`ifstream` 用于从文件读取数据，`ofstream` 用于将数据写入文件。
+   ifstream inputFile("input.txt");
+   ofstream outputFile("output.txt");
+2. 文件操作：可以使用文件流对象执行文件的打开、关闭、读取和写入操作。
+   ifstream inputFile("input.txt");
+   if (inputFile.is_open()) {
+       // 读取文件内容
+       inputFile >> data;
+       // 关闭文件
+       inputFile.close();
+   }
+
+ string流：
+1. stringstream：`stringstream` 是 `istringstream` 和 `ostringstream` 的基类，用于将字符串与其他数据类型之间进行转换。
+   stringstream ss;
+   ss << "Hello, " << "World!";
+   string result = ss.str();
+2. istringstream：`istringstream` 用于从字符串中提取数据，如将字符串解析为整数或浮点数。
+   string str = "123 45.67";
+   istringstream iss(str);
+   int num;
+   double d;
+   iss >> num >> d;
+3. ostringstream：`ostringstream` 用于将数据转换为字符串，如将整数或浮点数转换为字符串。
+   ostringstream oss;
+   int num = 42;
+   double d = 3.14;
+   oss << "Number: " << num << ", Pi: " << d;
+   string result = oss.str();
+
+ 格式控制：
+1. 格式化输出：使用 `setw`、`setprecision` 和 `fixed` 等函数控制输出的宽度和精度。
+   cout << setw(10) << left << "Name" << setw(5) << right << "Age";
+   cout << setprecision(2) << fixed << 3.141592;
+2. 控制符：使用 `endl` 换行并刷新缓冲区，使用 `setfill` 和 `setw` 来控制填充字符和字段宽度。
+   cout << "Hello" << endl;
+   cout << setfill('*') << setw(10) << 42;
+
+ 异常处理：
+1. 异常处理：C++支持异常处理，可以使用 `try`、`catch` 和 `throw` 关键字来捕获和处理异常。
+   try {
+       // 可能引发异常的代码
+   } catch (ExceptionType e) {
+       // 处理异常的代码
+   }
+2. 标准异常类：C++提供了一些标准异常类，如 `std::runtime_error` 和 `std::invalid_argument`，用于表示不同类型的异常。
+
+
+第9章：顺序容器：
+顺序容器概述：
+1. 顺序容器：顺序容器是C++标准库提供的一种数据结构，用于存储和管理元素的线性序列。
+    常见的顺序容器包括 `vector`、`list`、`deque`、`array` 和 `string` 等。
+2.容器迭代器：迭代器用于遍历容器的元素，提供了一种通用的方式来访问容器中的数据。
+   vector<int>::iterator it = myVector.begin();
+
+ 容器类型概览：
+1. vector：`vector` 是一个动态数组，支持随机访问和快速尾部插入。
+    vector<int> myVector;
+   myVector.push_back(42); // 尾部插入元素
+2. list：list` 是一个双向链表，支持快速插入和删除操作。
+   list<string> myList;
+   myList.push_back("Hello");
+   myList.push_front("World");
+3. deque：`deque` 是一个双端队列，支持在两端进行快速插入和删除操作。
+   deque<double> myDeque;
+   myDeque.push_back(3.14);
+   myDeque.push_front(2.71);
+4. array：`array` 是一个静态数组，大小固定，支持随机访问。
+   array<int, 5> myArray;
+   myArray[0] = 42;
+5. string：`string` 是一种特殊的容器，用于存储字符串，提供了丰富的字符串操作功能。
+   string myString = "Hello, World!";
+   myString.length(); // 获取字符串长度
+
+ 顺序容器操作：
+1. 插入元素：使用 `push_back`、`push_front`、`insert` 等方法在容器中插入元素。
+   myVector.push_back(42);
+   myList.push_front("Hello");
+   myDeque.insert(myDeque.begin() + 1, 3.14);
+2. 删除元素：使用 `pop_back`、`pop_front`、`erase` 等方法从容器中删除元素。
+   myVector.pop_back();
+   myList.pop_front();
+   myDeque.erase(myDeque.begin() + 2);
+3. 访问元素：使用迭代器或下标运算符 `[]` 访问容器中的元素。
+   vector<int>::iterator it = myVector.begin();
+   int element = myVector[2];
+
+ vector对象是如何增长的：
+1. vector增长策略：`vector` 会自动管理内部数组的大小，当需要插入更多元素时，会动态扩展数组的大小。
+    常见的增长策略是每次翻倍当前容量。
+2. 预留容量：可以使用 `reserve` 方法预留一定的容量，以避免多次扩展操作。
+   myVector.reserve(100); // 预留容量
+
+ 额外的string操作：
+1.字符串连接：使用 + 运算符或 append 方法将两个字符串连接起来。
+   string result = str1 + str2;
+   str1.append(str2);
+2. 字符串查找：使用 `find` 方法查找子字符串在字符串中的位置。
+   size_t found = str.find("Hello");
+   if (found != string::npos) {
+       // 子字符串找到了
+   }
+
+ 容器适配器：
+1. 容器适配器：C++标准库提供了容器适配器 `stack` 和 `queue`，用于实现栈和队列数据结构。
+   stack<int> myStack;
+   queue<string> myQueue;
+2. 适配器操作：适配器提供了类似于栈和队列的操作，如 `push`、`pop`、`top`（栈）和 `front`、`back`（队列）等。

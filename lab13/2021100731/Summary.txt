@@ -1,0 +1,8 @@
+Unique_ptr：
+	Unique_ptr是独占式的智能指针。其管理对象的所有权不和其他的对象共享。由于该特性，故Unique_ptr管理的对象的所有权不能通过赋值符号来转移。只能采取move()实现所有权的转移。一般通过make_unique方法来实现一个unique_ptr的构造。
+
+Shared_ptr
+	Shared_ptr是共享式的只能指针。一般来说，Shared_ptr使用最多。其在被引用之后会增加计数，可以通过use_count()返回被引用数。在这个数归零之前，Shared_ptr所占用的内存都不会被释放。这就保证了Shared_ptr可以在某个引用析构时保证其他引用仍然可用。但是当两个Shared_ptr相互引用时，会出现死锁问题，引用计数永远不为0。一般通过make_shared方法来实现一个Shared_ptr的构造。
+
+Weak_ptr
+	Weak_ptr用于解决Shared_ptr的死锁问题。Weak_ptr是对对象的一种弱引用，它不会增加对象的use_count。而Weak_ptr和Shared_ptr可以相互转化，Shared_ptr可以直接赋值给Weak_ptr，Weak_ptr也可以通过调用lock函数来获得shared_ptr。一般Weak_ptr与Shared_ptr搭配使用。若要通过Weak_ptr使用对象，则需要先对其lock操作，进而访问原始对象。

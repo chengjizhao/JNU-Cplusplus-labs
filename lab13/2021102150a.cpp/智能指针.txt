@@ -1,0 +1,49 @@
+智能指针是C++11引入的一种资源管理工具，它可以帮助程序员更好地管理动态分配的内存，以避免内存泄漏和悬挂指针等问题。以下是三种常见的智能指针及其使用方法和特点：
+
+1. `std::unique_ptr`
+
+使用方法：
+
+
+```cpp
+std::unique_ptr<int> ptr(new int(42));
+```
+特点：
+
+* `std::unique_ptr` 保证其指向的对象在任何时刻都只有一个 `unique_ptr` 拥有，即其指向的对象是独占的。当 `unique_ptr` 被销毁时（例如离开作用域或被重新赋值），它所指向的对象也会被自动销毁。
+* `std::unique_ptr` 不能被复制，但可以被移动。
+* `std::unique_ptr` 可以拥有裸指针作为默认参数。
+2. `std::shared_ptr`
+
+使用方法：
+
+
+```cpp
+std::shared_ptr<int> ptr1(new int(42));
+std::shared_ptr<int> ptr2 = ptr1; // ptr1 和 ptr2 共享同一个对象
+```
+特点：
+
+* `std::shared_ptr` 允许多个 `shared_ptr` 共享同一个对象。当最后一个指向该对象的 `shared_ptr` 被销毁时，该对象才会被销毁。
+* `std::shared_ptr` 可以使用引用计数来管理内存，因此其内存管理相对于 `std::unique_ptr` 更高效。
+* `std::shared_ptr` 可以被复制，但复制后指向同一个对象。
+3. `std::weak_ptr`
+
+使用方法：
+
+
+```cpp
+std::shared_ptr<int> sp(new int(42));
+std::weak_ptr<int> wp = sp; // wp 和 sp 指向同一个对象
+```
+特点：
+
+* `std::weak_ptr` 不会增加其指向对象的引用计数，因此不会阻止对象被销毁。
+* `std::weak_ptr` 可以观察其是否已经失效（即所指向的对象是否已经被销毁），如果失效则访问它会导致未定义行为。可以使用 `std::weak_ptr::expired()` 来检查一个 `weak_ptr` 是否已经失效。
+* `std::weak_ptr` 可以与 `std::shared_ptr` 配合使用，例如在实现观察者模式时，可以将观察者和被观察者之间的依赖关系解耦。
+
+使用场景：
+
+* 当需要独占一个对象的所有权时，可以使用 `std::unique_ptr`。例如，当一个对象在某个作用域内创建，并且在该作用域内需要被销毁时，可以使用 `std::unique_ptr` 来管理该对象的生命周期。
+* 当需要多个指针共享同一个对象的所有权时，可以使用 `std::shared_ptr`。例如，当一个对象需要在多个函数之间共享时，可以使用 `std::shared_ptr` 来管理该对象的生命周期。
+* 当需要观察一个对象而不拥有其所有权时，可以使用 `std::weak_ptr`。例如，当需要实现观察者模式时，可以使用 `std::weak_ptr` 来观察被观察者的状态变化，而不需要关心被观察者的生命周期。

@@ -1,0 +1,19 @@
++-------------------+
+|       Shape       |
++-------------------+
+| -                  |
+| -                  |
+|-------------------|
+| + calculateArea() |
+| + calculatePerimeter() |
++-------------------+
+          ^
+          |
+          |
+     +-------+         +----------+
+     | Circle|         | Rectangle |
+     +-------+         +----------+
+     | - radius         | - width   |
+     | + calculateArea() | + calculateArea() |
+     | + calculatePerimeter() | + calculatePerimeter() |
+     +-------------------+

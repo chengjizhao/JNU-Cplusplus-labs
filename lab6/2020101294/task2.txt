@@ -1,0 +1,7 @@
+-----------------------------------
+|        YourClassName           |
+-----------------------------------
+| - privateVariable: DataType   |
+| + publicMethod(): void        |
+| # protectedMethod(): void     |
+-----------------------------------

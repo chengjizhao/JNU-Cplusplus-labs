@@ -1,0 +1,3 @@
+D:/C++Files/Homework/work13/task2/build/CMakeFiles/test.dir
+D:/C++Files/Homework/work13/task2/build/CMakeFiles/edit_cache.dir
+D:/C++Files/Homework/work13/task2/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,2 @@
+C:\mingw32\bin\ar.exe qc libcalc.a CMakeFiles/calc.dir/functionh.cpp.obj CMakeFiles/calc.dir/helloword.cpp.obj
+C:\mingw32\bin\ranlib.exe libcalc.a

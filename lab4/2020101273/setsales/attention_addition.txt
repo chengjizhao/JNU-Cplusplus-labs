@@ -1,0 +1,15 @@
+文件分开后没有报错但出现了
+undefined reference to `setSales(const double*, int num)’等3个函数即 无法链接到sales.cpp内部函数
+这是因为VS code编译时只对main函数文件进行编译，而我们编写的函数分文件swap.cpp没有被编译，所以出现报错。
+解决办法：
+将自己编写的函数分文件（本例中为sales.cpp）路径
+在工程中找到自己写的文件点击右键复制路径，同时将路径改为双斜杠 \\
+添加到.vscode的tasks.json中的
+"args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "//sales.cpp路径//",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],

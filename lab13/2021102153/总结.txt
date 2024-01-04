@@ -1,0 +1,31 @@
+`std::unique_ptr`、`std::shared_ptr`和`std::weak_ptr`是C++标准库中的三种智能指针，它们提供了自动内存管理和避免内存泄漏的机制。
+
+1. std::unique_ptr
+使用方法:
+cpp`std::unique_ptr<int> ptr(new int(42));`
+特点:
+拥有唯一的对象所有权。不支持拷贝，只支持移动。
+当`unique_ptr`超出范围或被显式释放时，它所拥有的对象会被自动销毁。
+使用场景:
+当需要确保某个对象的生命周期只有一个智能指针管理时。当你想要显式地转移对象的所有权时。
+2. std::shared_ptr
+使用方法:
+cpp`std::shared_ptr<int> ptr1(new int(42));
+std::shared_ptr<int> ptr2 = ptr1; ptr1和ptr2共享对象所有权
+特点:
+支持拷贝，允许多个智能指针共享同一个对象。
+使用引用计数技术来跟踪有多少个`shared_ptr`指向同一个对象。
+当最后一个`shared_ptr`销毁或重置时，它所指向的对象会被自动销毁。
+使用场景:
+当你想要多个智能指针共享同一个对象时。
+当你想要自动管理对象的生命周期，而不需要显式地释放它时。
+3. std::weak_ptr
+使用方法:
+cpp`std::shared_ptr<int> ptr1(new int(42));
+std::weak_ptr<int> weakPtr = ptr1; 不改变ptr1和weakPtr共享所有权的状态
+特点:
+是对`shared_ptr`的弱引用，不拥有对象所有权。
+不能直接访问其所引用的对象，必须通过一个`shared_ptr`来访问。
+使用场景:
+当你需要一个指针，它指向由`shared_ptr`管理的对象，但你不想改变对象的所有权时。
+当你想要在依赖`shared_ptr`的情况下避免循环引用时。

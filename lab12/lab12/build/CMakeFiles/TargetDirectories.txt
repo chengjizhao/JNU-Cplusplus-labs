@@ -1,0 +1,4 @@
+D:/code/c++_code/lab12/build/CMakeFiles/My.dir
+D:/code/c++_code/lab12/build/CMakeFiles/MyExecutable.dir
+D:/code/c++_code/lab12/build/CMakeFiles/edit_cache.dir
+D:/code/c++_code/lab12/build/CMakeFiles/rebuild_cache.dir

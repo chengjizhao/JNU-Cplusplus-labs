@@ -1,0 +1,26 @@
+智能指针是C++中用于管理动态内存分配的一种重要工具。以下是三种主要的智能指针及其使用方法和特点：
+std::unique_ptr:
+使用方法:
+cpp`std::unique_ptr<int> ptr(new int(42));`
+特点:
+它拥有其指向的对象，并确保该对象在unique_ptr被销毁时被删除。
+不能有多个unique_ptr指向同一个对象。
+使用场景:
+当需要一个明确拥有其对象的智能指针时。这可以防止因拷贝操作而导致的潜在内存泄漏。
+std::shared_ptr:
+使用方法:
+cpp`std::shared_ptr<int> ptr1 = std::make_shared<int>(42);
+std::shared_ptr<int> ptr2 = ptr1; // 共享同一个对象`
+特点:
+多个shared_ptr可以共享同一个对象的所有权。当最后一个指向对象的shared_ptr被销毁或重置时，对象会被删除。
+使用引用计数来跟踪有多少shared_ptr指向同一个对象。
+使用场景:
+当希望多个指针可以共享同一个对象时。这是为了避免因拷贝而导致的大量内存开销。
+std::weak_ptr:
+使用方法:
+cpp`std::shared_ptr<int> sptr(new int(42));
+std::weak_ptr<int> wptr = sptr;`
+特点:
+不拥有其指向的对象，只是观察该对象。它不会增加引用计数，也不会阻止对象被删除。
+使用场景:
+当需要一个不会影响对象生命周期的智能指针观察者时。例如，当有一个对象，它可能由多个shared_ptr共享，而希望添加一个额外的观察者，但不希望它影响对象的生命周期。

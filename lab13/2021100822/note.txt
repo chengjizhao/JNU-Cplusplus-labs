@@ -1,0 +1,16 @@
+1. unique_ptr：
+    特点：unique_ptr 用于独占所有权的情况，即在任一时间点只能有一个 unique_ptr 指向特定的对象。当 unique_ptr 被析构或者转移所有权时，它所管理的对象会被销毁。
+    使用方法：可以使用 std::make_unique 来创建 unique_ptr 对象，也可以使用 new 关键字赋值给 unique_ptr。
+    使用场景：适用于资源独占、所有权明确的情况，例如管理动态分配的内存或者需要确保只有一个指针可以访问某个对象的情况。
+
+2. shared_ptr：
+    特点：shared_ptr 允许多个指针共享对同一对象的所有权，它使用引用计数来追踪有多少个 shared_ptr 指向相同的对象。只有当最后一个 shared_ptr 被销毁时，才会销毁其所管理的对象。
+    使用方法：可以使用 std::make_shared 来创建 shared_ptr 对象，也可以使用 new 关键字赋值给 shared_ptr。
+    使用场景：适用于需要多个指针共享同一对象所有权的情况，例如构建数据结构、循环引用的处理以及在函数之间传递共享对象等。
+
+3. weak_ptr：
+    特点：weak_ptr 是为了解决 shared_ptr 的循环引用问题而引入的，它不增加引用计数。因此，即使有 weak_ptr 指向一个对象，该对象也可能已经被释放。
+    使用方法：可以通过调用 shared_ptr 的成员函数 lock() 来从 weak_ptr 创建一个 shared_ptr 对象，从而访问其所指向的对象。
+    使用场景：通常与 shared_ptr 一起使用，用于打破 shared_ptr 的循环引用，防止内存泄漏。
+
+总的来说，unique_ptr 适合具有独占性质的所有权管理，shared_ptr 适合多个所有权共享的情况，而 weak_ptr 则适合在 shared_ptr 中避免循环引用。在实际开发中，根据具体的情况选择合适的智能指针是非常重要的。

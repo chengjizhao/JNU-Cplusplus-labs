@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/86198/vsCode/build",
+  "command": "D:\\mingw64\\bin\\g++.exe  @CMakeFiles/add_static.dir/includes_CXX.rsp -g -o CMakeFiles\\add_static.dir\\src\\name\\lib_add.cpp.obj -c C:\\Users\\86198\\vsCode\\src\\name\\lib_add.cpp",
+  "file": "C:/Users/86198/vsCode/src/name/lib_add.cpp",
+  "output": "CMakeFiles/add_static.dir/src/name/lib_add.cpp.obj"
+},
+{
+  "directory": "C:/Users/86198/vsCode/build",
+  "command": "D:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -o CMakeFiles\\main.dir\\src\\name\\lib_add.cpp.obj -c C:\\Users\\86198\\vsCode\\src\\name\\lib_add.cpp",
+  "file": "C:/Users/86198/vsCode/src/name/lib_add.cpp",
+  "output": "CMakeFiles/main.dir/src/name/lib_add.cpp.obj"
+}
+]

@@ -1,0 +1,37 @@
+C++中有三种智能指针：unique_ptr，shared_ptr 和 weak_ptr。
+
+unique_ptr
+
+unique_ptr 是一种独占式智能指针，它拥有对一个对象的唯一所有权，不能与其他智能指针共享对象所有权。
+unique_ptr 通常用于需要明确指出对象所有权的场景，确保资源在适当的时间被释放。
+使用方法：
+cpp`std::unique_ptr<int> ptr(new int(42));  
+// 使用 * 操作符访问对象  
+int value = *ptr;  
+// 当离开作用域时，对象会被自动释放`
+shared_ptr
+
+shared_ptr 是一种共享式智能指针，允许多个智能指针共享同一个对象。
+shared_ptr 通过引用计数来管理对象的生命周期，当最后一个 shared_ptr 离开作用域或被重置时，对象会被自动释放。
+使用方法：
+cpp`std::shared_ptr<int> ptr1(new int(42));  
+std::shared_ptr<int> ptr2 = ptr1; // ptr1 和 ptr2 共享对象所有权  
+// 使用 * 操作符访问对象  
+int value = *ptr2;  
+// 当离开作用域时，对象会被自动释放`
+weak_ptr
+
+weak_ptr 是一种弱引用智能指针，用于解决循环引用的问题。
+weak_ptr 不拥有对象所有权，只是简单地保存对对象的弱引用。它不会增加对象的引用计数。
+使用方法：
+cpp`std::shared_ptr<int> ptr1(new int(42));  
+std::weak_ptr<int> ptr2 = ptr1; // ptr2 保存对 ptr1 所指向对象的弱引用  
+// 使用 * 操作符访问对象（只在对象存在时有效）  
+if (auto temp = ptr2.lock()) {  
+    int value = *temp;  
+}  
+// 当 ptr1 被销毁或重置时，ptr2 中的弱引用将失效，不能再被锁定`
+三种智能指针各有特点和使用场景：
+当需要明确指出对象的所有权并确保资源在适当的时间被释放时，使用 unique_ptr。
+当需要多个智能指针共享同一个对象时，使用 shared_ptr。
+当需要解决循环引用问题时，使用 weak_ptr。

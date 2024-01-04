@@ -1,0 +1,4 @@
+D:/cmake/my/build/CMakeFiles/My.dir
+D:/cmake/my/build/CMakeFiles/MyExecutable.dir
+D:/cmake/my/build/CMakeFiles/edit_cache.dir
+D:/cmake/my/build/CMakeFiles/rebuild_cache.dir

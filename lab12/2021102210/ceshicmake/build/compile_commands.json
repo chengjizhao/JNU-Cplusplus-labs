@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/Users/xjh/Desktop/ceshicmake/build",
+  "command": "C:\\mingw32\\bin\\g++.exe  @CMakeFiles/iwanttofindthisfile.dir/includes_CXX.rsp -g -o CMakeFiles\\iwanttofindthisfile.dir\\functionh.cpp.obj -c C:\\Users\\xjh\\Desktop\\ceshicmake\\functionh.cpp",
+  "file": "C:/Users/xjh/Desktop/ceshicmake/functionh.cpp",
+  "output": "CMakeFiles/iwanttofindthisfile.dir/functionh.cpp.obj"
+},
+{
+  "directory": "C:/Users/xjh/Desktop/ceshicmake/build",
+  "command": "C:\\mingw32\\bin\\g++.exe  @CMakeFiles/iwanttofindthisfile.dir/includes_CXX.rsp -g -o CMakeFiles\\iwanttofindthisfile.dir\\helloword.cpp.obj -c C:\\Users\\xjh\\Desktop\\ceshicmake\\helloword.cpp",
+  "file": "C:/Users/xjh/Desktop/ceshicmake/helloword.cpp",
+  "output": "CMakeFiles/iwanttofindthisfile.dir/helloword.cpp.obj"
+},
+{
+  "directory": "C:/Users/xjh/Desktop/ceshicmake/build",
+  "command": "C:\\mingw32\\bin\\g++.exe  @CMakeFiles/calc.dir/includes_CXX.rsp -g -o CMakeFiles\\calc.dir\\functionh.cpp.obj -c C:\\Users\\xjh\\Desktop\\ceshicmake\\functionh.cpp",
+  "file": "C:/Users/xjh/Desktop/ceshicmake/functionh.cpp",
+  "output": "CMakeFiles/calc.dir/functionh.cpp.obj"
+},
+{
+  "directory": "C:/Users/xjh/Desktop/ceshicmake/build",
+  "command": "C:\\mingw32\\bin\\g++.exe  @CMakeFiles/calc.dir/includes_CXX.rsp -g -o CMakeFiles\\calc.dir\\helloword.cpp.obj -c C:\\Users\\xjh\\Desktop\\ceshicmake\\helloword.cpp",
+  "file": "C:/Users/xjh/Desktop/ceshicmake/helloword.cpp",
+  "output": "CMakeFiles/calc.dir/helloword.cpp.obj"
+}
+]

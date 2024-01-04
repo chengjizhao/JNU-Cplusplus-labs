@@ -1,0 +1,45 @@
+std::unique_ptr, std::shared_ptr, 和 std::weak_ptr 是 C++ 标准库中的智能
+指针，用于管理动态分配的内存。它们各自有不同的使用方法、特点和适用场景。
+1.std::unique_ptr:
+使用方法： 唯一所有权的智能指针，不能被拷贝，只能通过移动所有权。
+  #include &lt;memory&gt;
+  std::unique_ptr&lt;int&gt; uniquePtr = std::make_unique&lt;int&gt;(4
+  2);
+特点：
+提供独占式所有权，确保只有一个 std::unique_ptr 拥有所管理的资源。
+轻量级，不需要维护引用计数，性能较高。
+使用场景：
+管理动态分配的单一对象。
+在容器中存储独占所有权的对象。
+
+2.std::shared_ptr:
+使用方法： 提供多个 std::shared_ptr 可以共享同一块内存。
+  #include &lt;memory&gt;
+  std::shared_ptr&lt;int&gt; sharedPtr1 = std::make_shared&lt;int&gt;
+  (42);
+  std::shared_ptr&lt;int&gt; sharedPtr2 = sharedPtr1;  // 共享所有权
+特点：
+提供共享所有权，通过引用计数追踪资源的所有权情况。
+可以被拷贝，每次拷贝会增加引用计数，直到最后一个 std::shared_ptr 被销毁时
+释放内存。
+使用场景：
+多个指针需要访问和共享相同的资源。
+循环引用的情况，可以使用 std::weak_ptr 打破循环。
+
+3.std::weak_ptr:
+使用方法： 用于解决 std::shared_ptr 的循环引用问题，不增加引用计数。
+  #include &lt;memory&gt;
+  std::shared_ptr&lt;int&gt; sharedPtr = std::make_shared&lt;int&gt;(4
+  2);
+  std::weak_ptr&lt;int&gt; weakPtr = sharedPtr;
+特点:
+不增加引用计数，不影响资源的生命周期。
+可以通过 lock 方法获取一个 std::shared_ptr，用于临时共享资源。
+使用场景：
+解决 std::shared_ptr 循环引用导致资源无法释放的问题。
+在某些情况下，需要共享资源但不影响其生命周期。
+
+总结：
+使用 std::unique_ptr 管理独占资源，性能高，适合单一所有权的情况。
+使用 std::shared_ptr 管理共享资源，适合多个指针需要访问相同资源的情况。
+使用 std::weak_ptr 打破 std::shared_ptr 的循环引用，避免内存泄漏。

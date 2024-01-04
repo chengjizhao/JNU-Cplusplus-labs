@@ -1,0 +1,184 @@
+1. 一般类对象：
+```
+class A {
+public:
+    int a;
+    void f() {}
+};
+A obj;
+```
+在内存中，obj对象的布局如下：
+```
+|--------|
+|  int a |
+|--------|
+|  void f() |
+|--------|
+```
+
+2. 继承类对象：
+```
+class Base {
+public:
+    int a;
+    void f() {}
+};
+class Derived : public Base {
+public:
+    int b;
+    void g() {}
+};
+Derived obj;
+```
+在内存中，obj对象的布局如下：
+```
+|--------|
+|  int a |
+|--------|
+|  void f() |
+|--------|
+|  int b |
+|--------|
+|  void g() |
+|--------|
+```
+
+3. 带虚函数的类对象：
+```
+class Base {
+public:
+    int a;
+    virtual void f() {}
+};
+Base obj;
+```
+在内存中，obj对象的布局如下：
+```
+|--------|
+|  int a |
+|--------|
+|  void f() |
+|--------|
+|  vptr |
+|--------|
+```
+
+4. 基类有虚函数的子类对象：
+```
+class Base {
+public:
+    int a;
+    virtual void f() {}
+};
+class Derived : public Base {
+public:
+    int b;
+};
+Derived obj;
+```
+在内存中，obj对象的布局如下：
+```
+|--------|
+|  int a |
+|--------|
+|  void f() |
+|--------|
+|  int b |
+|--------|
+```
+
+5. 基类有虚函数且子类有自己的更多的虚函数的类对象：
+```
+class Base {
+public:
+    int a;
+    virtual void f() {}
+};
+class Derived : public Base {
+public:
+    int b;
+    virtual void g() {}
+};
+Derived obj;
+```
+在内存中，obj对象的布局如下：
+```
+|--------|
+|  int a |
+|--------|
+|  void f() |
+|--------|
+|  int b |
+|--------|
+|  void g() |
+|--------|
+|  vptr |
+|--------|
+```
+
+6. 多继承的类对象：
+```
+class Base1 {
+public:
+    int a;
+    virtual void f() {}
+};
+class Base2 {
+public:
+    int b;
+    virtual void g() {}
+};
+class Derived : public Base1, public Base2 {
+public:
+    int c;
+};
+Derived obj;
+```
+在内存中，obj对象的布局如下：
+```
+|--------|
+|  int a |
+|--------|
+|  void f() |
+|--------|
+|  int b |
+|--------|
+|  void g() |
+|--------|
+|  int c |
+|--------|
+```
+
+7. 虚基类的类对象：
+```
+class Base {
+public:
+    int a;
+};
+class Derived1 : virtual public Base {
+public:
+    int b;
+};
+class Derived2 : virtual public Base {
+public:
+    int c;
+};
+class Derived3 : public Derived1, public Derived2 {
+public:
+    int d;
+};
+Derived3 obj;
+```
+在内存中，obj对象的布局如下：
+```
+|--------|
+|  int a |
+|--------|
+|  int b |
+|--------|
+|  int c |
+|--------|
+|  int d |
+|--------|
+```
+

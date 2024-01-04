@@ -1,0 +1,2 @@
+C:\mingw64\bin\ar.exe qc lib\libcheng.a CMakeFiles/cheng.dir/src/cheng/text12.cpp.obj
+C:\mingw64\bin\ranlib.exe lib\libcheng.a

@@ -1,0 +1,46 @@
+基类 Car:
+属性: color, model, engine_type
+函数: calculatePrice() (纯虚函数)
+
+派生类 Sedan:
+属性: number_of_doors, length
+函数: calculatePrice() (覆盖基类的虚函数)
+
+派生类 SUV:
+属性: number_of_rows, height
+函数: calculatePrice() (覆盖基类的虚函数)
+
++----------------+          +-----------+         +------------+  
+|       Car       |-------> |    Sedan   |        |    SUV     |  
++----------------+          +-----------+          +------------+  
+| color: string   |         | number_of_doors: int | number_of_rows: int |  
+| model: string   |         | length: double       | height: double      |  
+| engine_type: string |     +-----------+          +------------+  
++----------------+              |                        |  
+                                |                        |  
+                                v                        v  
+                            +-----------+         +------------+  
+                            | calculatePrice() |  | calculatePrice() |  
+                            +-----------+         +------------+  
+  
++----------------+          +-----------+         +------------+  
+|       Sedan     |-------> | SedanPart1 |        | SedanPart2 |  
++----------------+          +-----------+            +------------+  
+| number_of_doors: int |    | part1_material: string | part2_material: string |  
+| length: double        |   +-----------+            +------------+  
++----------------+              |                          |  
+                                v                          v  
+                            +-----------+         +------------+  
+                            | calculatePrice() |  | calculatePrice() |  
+                            +-----------+         +------------+  
+  
++----------------+          +-----------+         +------------+  
+|       SUV       |-------> | SUVPart1   |         | SUVPart2   |  
++----------------+          +-----------+         +------------+  
+| number_of_rows: int |     | part1_material: string | part2_material: string |  
+| height: double      |     +-----------+         +------------+  
++----------------+                |                        |  
+                                  v                        v  
+                             +-----------+         +------------+  
+                             | calculatePrice() |  | calculatePrice() |  
+                             +-----------+         +------------+
