@@ -12,30 +12,29 @@ bool ready = false;
 double randomNumber;
 double result;
 
-void generateRandomNumber()
+void randNum()
 {
     unique_lock<mutex> lock(mtx);
 
-    // Ä£ÄâÉú³ÉËæ»úÊı
+    //ç”Ÿæˆéšæœºæ•°
     srand(time(0));
     randomNumber = rand() % 100;
-    cout << "Ëæ»úÉú³ÉµÄÊıÊÇ: " << randomNumber << endl;
+    cout << "éšæœºç”Ÿæˆçš„æ•°æ˜¯: " << randomNumber << endl;
 
     ready = true;
     cv.notify_one();
 }
 
-void calculateSquareRoot() {
+void sqrtFun() {
     unique_lock<mutex> lock(mtx);
     cv.wait(lock, [] { return ready; });
-
     result = sqrt(randomNumber);
-    cout << "Õâ¸öÊıµÄ¾ù·½¸ùÊÇ: " << result << endl;
+    cout << "è¿™ä¸ªæ•°çš„å‡æ–¹æ ¹æ˜¯: " << result << endl;
 }
 
 int main() {
-    std::thread t1(generateRandomNumber);
-    std::thread t2(calculateSquareRoot);
+    std::thread t1(randNum);
+    std::thread t2(sqrtFun);
 
     t1.join();
     t2.join();
