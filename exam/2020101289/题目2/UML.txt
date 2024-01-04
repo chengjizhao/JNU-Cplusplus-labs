@@ -1,0 +1,5 @@
+在这个UML图中：
+
+Strategy 是一个接口，它定义了所有支持的算法的公共接口。Strategy 接口中声明了虚函数 execute()，其具体实现由各个具体策略类来完成。
+ConcreteStr1 和 ConcreteStr2 是 Strategy 接口的具体实现。它们实现了在特定上下文（Context）中执行特定算法的方式。这些类提供了 execute() 方法的具体实现。
+Context 是一个需要使用到某种策略的类。它维护一个对 Strategy 对象的引用，并在需要执行策略时调用 execute() 方法。这个引用可以在运行时动态地改变，以改变 Context 所使用的策略。
