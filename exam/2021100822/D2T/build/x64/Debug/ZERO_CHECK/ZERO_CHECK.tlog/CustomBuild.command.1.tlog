@@ -1,0 +1,10 @@
+^D:\桌面\C++KAOSHI\D2T\BUILD\CMAKEFILES\0ED19DEDFADBB73A2BACC732429BF35D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/桌面/C++kaoshi/D2T -BD:/桌面/C++kaoshi/D2T/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/桌面/C++kaoshi/D2T/build/xvhanshu.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
