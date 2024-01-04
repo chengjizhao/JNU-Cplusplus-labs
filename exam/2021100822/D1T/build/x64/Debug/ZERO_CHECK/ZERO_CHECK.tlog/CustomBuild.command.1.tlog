@@ -1,0 +1,10 @@
+^D:\桌面\C++KAOSHI\D1T\BUILD\CMAKEFILES\2DF8A57EC7951F737069ABF237EFAFAA\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/桌面/C++kaoshi/D1T -BD:/桌面/C++kaoshi/D1T/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/桌面/C++kaoshi/D1T/build/Complex.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
