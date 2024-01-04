@@ -1,0 +1,65 @@
+纯虚函数：
+在基类中声明的虚函数，但没有在基类中提供具体的实现。
+抽象类：
+包含至少一个纯虚函数的类被称为抽象类。
+抽象类用作基类，提供一个接口，而具体的功能实现留给其派生类。派生类必须实现基类中的所有纯虚函数，才能被实例化。
+
+相关联的过程：
+在编译阶段，编译器为每个类创建虚函数表。虚函数表中存放了类中每个虚函数的地址。
+如果类包含了纯虚函数，那么对应的条目会被置为NULL或指向一个默认的纯虚函数实现。
+在运行阶段，每个对象都包含一个指向其类的虚函数表的虚指针。通过这个虚指针，程序能够在运行时动态地调用正确的虚函数。
+当通过基类指针或引用调用虚函数时，实际上会使用虚指针指向的虚函数表，然后根据表中的地址调用相应的函数。
+这就实现根据对象的实际类型调用相应的函数。
+
+
+示例：
+#include <iostream>
+// 抽象类
+class Shape {
+public:
+    // 纯虚函数
+    virtual void draw() const = 0;
+};
+
+// 派生类
+class Circle : public Shape {
+public:
+    // 实现纯虚函数
+    void draw() const override {
+        std::cout << "Drawing a circle." << std::endl;
+    }
+};
+
+int main() {
+    // 创建派生类对象
+    Circle circle;
+
+    // 获取对象的地址
+    uintptr_t* vptr = *reinterpret_cast<uintptr_t**>(&circle);
+
+    // 输出虚函数表中的函数地址
+    std::cout << "Virtual Function Table (Address): " << vptr << std::endl;
+
+    // 获取虚函数表中第一个函数的地址，即 draw 函数的地址
+    uintptr_t drawFunctionAddress = vptr[0];
+    std::cout << "Draw Function Address: " << drawFunctionAddress << std::endl;
+
+    // 通过虚函数表调用 draw 函数
+    typedef void (*DrawFunction)(const Shape*);
+    DrawFunction drawFunction = reinterpret_cast<DrawFunction>(drawFunctionAddress);
+    drawFunction(&circle);
+
+    return 0;
+}
+首先，我创建了一个抽象类 Shape，其中包含一个纯虚函数 draw。然后，创建了一个派生类 Circle 来实现这个纯虚函数。
+在 main 函数中，首先创建了一个 Circle 对象，并获取了对象的地址。
+通过 reinterpret_cast，将这个地址转换为一个指向虚函数表的指针（vptr）。
+然后，输出虚函数表的地址以及虚函数表中第一个函数（draw 函数）的地址。
+最后，通过虚函数表中的地址调用了 draw 函数。
+
+为什么包含纯虚函数的类不能实例化？
+包含纯虚函数的类被称为抽象类，而抽象类不能被实例化的主要原因是缺乏对纯虚函数的具体实现。
+首先，纯虚函数没有具体实现，抽象类中的纯虚函数只有声明，没有提供具体的实现。因此，抽象类本身并不完整，缺少必要的代码来执行纯虚函数的操作。
+其次，无法确定对象的行为，当类中存在纯虚函数时，该类的对象可能无法完成必要的初始化或具体操作。实例化抽象类将导致对象中存在未定义的行为，因为没有为纯虚函数提供具体的实现。
+最后，抽象类是接口设计，通常被设计为定义一组接口或规范，而不是提供完整的实现。通过将实际实现留给派生类，抽象类鼓励派生类提供自己的具体实现，以满足接口的要求。
+
