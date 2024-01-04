@@ -18,7 +18,7 @@ void producer() {
         not_full.wait(lock, [] { return data_queue.size() < max_queue_size; });
 
         for (int i = 0; i < 3; ++i) {
-            int data = rand() % 100;  // 生成随机数据
+            int data = rand() % 100;  
             data_queue.push(data);
             cout << "Produced: " << data << endl;
         }
@@ -26,7 +26,7 @@ void producer() {
         lock.unlock();
         not_empty.notify_all();
 
-        this_thread::sleep_for(chrono::seconds(1));  // 每秒生产3个数据
+        this_thread::sleep_for(chrono::seconds(1));  
     }
 }
 
