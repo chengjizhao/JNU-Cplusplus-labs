@@ -29,9 +29,7 @@ int main()
     vehicles[0] = &car;
     vehicles[1] = &bike;
 
-    for (int i = 0; i < 2; i++) {
-        vehicles[i]->start();
-    }
+    for (int i = 0; i < 2; i++) { vehicles[i] -> start(); }
 
     return 0;
 }
