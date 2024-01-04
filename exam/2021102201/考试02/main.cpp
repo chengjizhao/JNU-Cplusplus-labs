@@ -9,7 +9,7 @@ class Shape
 public:
     virtual void draw()
     {
-        cout << "Drawing shape" << endl;
+        cout << "画图" << endl;
     }
 };
 
@@ -18,13 +18,13 @@ class Circle : public Shape
 public:
     void draw() override
     {
-        cout << "Drawing circle" << endl;
+        cout << "画一个圆" << endl;
     }
 };
 
 int main() {
     Shape* shape = new Circle();
-    shape->draw();
+    shape -> draw();
 
     delete shape;
 
